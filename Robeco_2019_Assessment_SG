@@ -1,14 +1,12 @@
-***SURVEY_ID="3447779c-6394-47e2-aef2-024f7c81e877"
+***SURVEY_ID="39d6c4c6-961b-436b-bc66-b2672d365e6f"
 ***Salesforce ID=PARTICIPANT_FIELD(8)
 ***DISPLAY_NAME=DISPLAY_NAME()
 ***Type=PARTICIPANT_FIELD(1)
-***PIIF=PARTICIPANT_FIELD(2)
 ***Size=TEXT(PARTICIPANT_FIELD(14))
-***Signed_PRI=TEXT(PARTICIPANT_FIELD(17))
 ***Region=PARTICIPANT_FIELD(16)
 ***Country=TEXT(PARTICIPANT_FIELD(6))
 
-***OO_12_1_SG=IFBLANK(SCORE("Report on module Strategy and Governance", "1a4cd09b3f0e408886ec7206b7cc8f6b", SURVEY_ID),0)
+/* SG 01 scoring */
 
 ***SG_01_1_all=SCORE("Applicable policies cover all AUM", "70cfd111622d408c8e205890bb3a22c9_2", SURVEY_ID)
 ***SG_01_1_maj=SCORE("Applicable policies cover a majority of AUM", "70cfd111622d408c8e205890bb3a22c9_3", SURVEY_ID)
@@ -37,55 +35,28 @@
 ***SG_01_ThreeStar=VALUE(IF((SG_01_1_AUMAcc>0)AND(SG_01_1_PolAcc>0)AND(SG_01_1_ak_SUM>200),3,0))
 ***SG_01_SCORE=VALUE(IF(SG_01_ThreeStar>SG_01_TwoStar,3,IF(SG_01_TwoStar>SG_01_OneStar,2,IF(SG_01_OneStar>0,1,0))))
 
-***SG_02_a=SCORE("Policy setting out your overall approach", "33010614cbf0404fa243156c742abf5c_10", SURVEY_ID)
-***SG_02_a_Sum=IFBLANK(IF((SG_02_a>0),100,0),0)
+/* SG 02 scoring - ROBECO SPECIFIC*/
 
-***SG_02_b=SCORE("Formalised guidelines on environmental factors", "33010614cbf0404fa243156c742abf5c_2", SURVEY_ID)
-***SG_02_b_Sum=IFBLANK(IF((SG_02_b>0),100,0),0)
-
-***SG_02_c=SCORE("Formalised guidelines on social factors", "33010614cbf0404fa243156c742abf5c_3", SURVEY_ID)
-***SG_02_c_Sum=IFBLANK(IF((SG_02_c>0),100,0),0)
-
-***SG_02_d=SCORE("Formalised guidelines on corporate governance factors", "33010614cbf0404fa243156c742abf5c_1", SURVEY_ID)
-***SG_02_d_Sum=IFBLANK(IF((SG_02_d>0),100,0),0)
-
-***SG_02_Fid=SCORE("Fiduciary_Or_Equivalent_Duties)Fiduciary (or equivalent) duties", "33010614cbf0404fa243156c742abf5c_11", SURVEY_ID)
-***SG_02_Fid_Sum=IFBLANK(IF((SG_02_Fid>0),100,0),0)
-
-***SG_02_e=SCORE("Asset class-specific guidelines", "33010614cbf0404fa243156c742abf5c_4", SURVEY_ID)
-***SG_02_e_Sum=IFBLANK(IF((SG_02_e>0),100,0),0)
-
-***SG_02_f=SCORE("Sector specific RI guidelines", "33010614cbf0404fa243156c742abf5c_5", SURVEY_ID)
-***SG_02_f_Sum=IFBLANK(IF((SG_02_f>0),100,0),0)
-
-***SG_02_g=SCORE("Screening / exclusions policy", "33010614cbf0404fa243156c742abf5c_6", SURVEY_ID)
-***SG_02_g_Sum=IFBLANK(IF((SG_02_g>0),100,0),0)
-
-***SG_02_h=SCORE("Engagement policy", "33010614cbf0404fa243156c742abf5c_7", SURVEY_ID)
-***SG_02_h_Sum=IFBLANK(IF((SG_02_h>0),100,0),0)
-
-***SG_02_i=SCORE("(Proxy) voting policy", "33010614cbf0404fa243156c742abf5c_8", SURVEY_ID)
-***SG_02_i_Sum=IFBLANK(IF((SG_02_i>0),100,0),0)
-
-***SG_02_j=SCORE("Other 1", "33010614cbf0404fa243156c742abf5c_9", SURVEY_ID)
-***SG_02_j_Sum=IFBLANK(IF((SG_02_j>0),100,0),0)
-
-***SG_02_k=SCORE("Other 2", "33010614cbf0404fa243156c742abf5c", SURVEY_ID)
-***SG_02_k_Sum=IFBLANK(IF((SG_02_k>0),100,0),0)
-
-***SG_02_Public_Sum=VALUE(SG_02_a_Sum)+VALUE(SG_02_b_Sum)+VALUE(SG_02_c_Sum)+VALUE(SG_02_d_Sum)+VALUE(SG_02_Fid_Sum)+VALUE(SG_02_e_Sum)+VALUE(SG_02_f_Sum)+VALUE(SG_02_g_Sum)+VALUE(SG_02_h_Sum)+VALUE(SG_02_i_Sum)+VALUE(SG_02_j_Sum)+VALUE(SG_02_k_Sum)
-
+***SG_02_NO=IFBLANK(SCORE("We cannot provide any investment policy documents", "1e24db39586c4f4a9d56564a68ded11e", SURVEY_ID),0)
+***SG_02_a=IFBLANK(SCORE("Policy setting out your overall approach", "33010614cbf0404fa243156c742abf5c_10", SURVEY_ID),0)
+***SG_02_b=IFBLANK(SCORE("Formalised guidelines on environmental factors", "33010614cbf0404fa243156c742abf5c_2", SURVEY_ID),0)
+***SG_02_c=IFBLANK(SCORE("Formalised guidelines on social factors", "33010614cbf0404fa243156c742abf5c_3", SURVEY_ID),0)
+***SG_02_d=IFBLANK(SCORE("Formalised guidelines on corporate governance factors", "33010614cbf0404fa243156c742abf5c_1", SURVEY_ID),0)
+***SG_02_Fid=IFBLANK(SCORE("Fiduciary_Or_Equivalent_Duties)Fiduciary (or equivalent) duties", "33010614cbf0404fa243156c742abf5c_11", SURVEY_ID),0)
+***SG_02_e=IFBLANK(SCORE("Asset class-specific guidelines", "33010614cbf0404fa243156c742abf5c_4", SURVEY_ID),0)
+***SG_02_f=IFBLANK(SCORE("Sector specific RI guidelines", "33010614cbf0404fa243156c742abf5c_5", SURVEY_ID),0)
+***SG_02_g=IFBLANK(SCORE("Screening / exclusions policy", "33010614cbf0404fa243156c742abf5c_6", SURVEY_ID),0)
+***SG_02_h=IFBLANK(SCORE("Engagement policy", "33010614cbf0404fa243156c742abf5c_7", SURVEY_ID),0)
+***SG_02_i=IFBLANK(SCORE("(Proxy) voting policy", "33010614cbf0404fa243156c742abf5c_8", SURVEY_ID),0)
+***SG_02_j=IFBLANK(SCORE("Other 1", "33010614cbf0404fa243156c742abf5c_9", SURVEY_ID),0)
+***SG_02_k=IFBLANK(SCORE("Other 2", "33010614cbf0404fa243156c742abf5c", SURVEY_ID),0)
+***SG_02_Sum=VALUE(SG_02_a)+VALUE(SG_02_b)+VALUE(SG_02_c)+VALUE(SG_02_d)+VALUE(SG_02_Fid)+VALUE(SG_02_e)+VALUE(SG_02_f)+VALUE(SG_02_g)+VALUE(SG_02_h)+VALUE(SG_02_i)+VALUE(SG_02_j)+VALUE(SG_02_k)
 ***SG_02_SCORE=VALUE(
-IF((SG_02_Public_Sum)=0,0,
-IF((SG_02_Public_Sum<SG_01_1_ak_SUM),2,
-IF((SG_02_Public_Sum=SG_01_1_ak_SUM),3
+IF((SG_02_NO>0),0,
+IF((SG_02_Sum>0),3,0
 ))))
 
-***SG_03_Yes=SCORE("Yes", "02c5418f2774444dae1ee9a895195a8f", SURVEY_ID)
-***SG_03_No=SCORE("No", "e0eddd40a4b7481085e8f3242d8c149c", SURVEY_ID)
-***SG_03_SCORE=VALUE(
-IF((SG_03_Yes)=3, 3, 0
-))
+/* SG 05 scoring */
 
 ***SG_05=SCORE("Indicate if and how frequently your organisation sets and reviews objectives for its responsible investment activities.", "716c86e458584aaca3d9ebb7b9fbe7cb", SURVEY_ID)
 ***SG_05_a=SCORE("05.1_A Quarterly or more frequently", "38ae1f84ecd04fa191c39e4d82603df1", SURVEY_ID)
@@ -100,6 +71,7 @@ IF(((SG_05_e)>0)OR((SG_05_d)>0), 2,
 IF(((SG_05_a)>0)OR((SG_05_b)>0)OR((SG_05_c)>0), 3,0)
 )))
 
+/* SG 07 scoring */
 
 ***SG_07_Board=RESPONSE("Board members or trustees", "76885bff75ae471db73361eef76326b6", SURVEY_ID)
 ***SG_07_Board_O=IFBLANK(SCORE("Oversight/accountability for responsible investment", "44a1ff77e58c4ca3b1b743dfa9a9eec6", SURVEY_ID),0)
@@ -177,176 +149,7 @@ IF((SG_07_Oversight_SUBSCORE2=2)AND(SG_07_Implementation_SUBSCORE>0),3,
 IF((SG_07_Oversight_SUBSCORE3=2)AND(SG_07_Implementation_SUBSCORE>0),2,0))
 ))))
 
-
-***SG_08_1_Board_d=IFBLANK(SCORE("Responsible investment included in personal development and/or training plan", "c858db1bb851466f91a41ffb3df3441e_2", SURVEY_ID),0)
-***SG_08_1_Board_NO=SCORE("None of the above", "bb69988b91d84950be0aef1715742814_7", SURVEY_ID)
-***SG_08_1_CEO=SCORE("Chief Executive Officer (CEO), Chief Investment Officer (CIO),  Investment Committee", "becc2f9f4c264c21ba3943b78bfa2336", SURVEY_ID)
-***SG_08_1_CEO_a=SCORE("Responsible investment KPIs and/or goals included in objectives", "c858db1bb851466f91a41ffb3df3441e_3", SURVEY_ID)
-***SG_08_1_CEO_b=SCORE("Responsible investment included in  appraisal process", "6d51612cfda8425891eef2433ddff67f_2", SURVEY_ID)
-***SG_08_1_CEO_c=SCORE("Variable pay linked to responsible investment performance", "1b02a713dd2e43cd9f247ec3bc0bc0ad_2", SURVEY_ID)
-***SG_08_1_CEO_d=IFBLANK(SCORE("Responsible investment included in personal development and/or training plan", "0220bbd533bf45af844225a1138911e0_2", SURVEY_ID),0)
-***SG_08_1_CLev=SCORE("Other C-level staff or head of department", "77f3af780cfc42fbac912d4b335aa6f9_1", SURVEY_ID)
-***SG_08_1_CLev_a=SCORE("Responsible investment KPIs and/or goals included in objectives", "c858db1bb851466f91a41ffb3df3441e_4", SURVEY_ID)
-***SG_08_1_CLev_b=SCORE("Responsible investment included in  appraisal process", "6d51612cfda8425891eef2433ddff67f_3", SURVEY_ID)
-***SG_08_1_CLev_c=SCORE("Variable pay linked to responsible investment performance", "1b02a713dd2e43cd9f247ec3bc0bc0ad_3", SURVEY_ID)
-***SG_08_1_CLev_d=IFBLANK(SCORE("Responsible investment included in personal development and/or training plan", "0220bbd533bf45af844225a1138911e0_3", SURVEY_ID),0)
-***SG_08_1_CLev_NO=SCORE("None of the above", "bb69988b91d84950be0aef1715742814_9", SURVEY_ID)
-***SG_08_1_PM=SCORE("Portfolio managers", "4ecfb9874d3a43229bf302c6078d2b0f", SURVEY_ID)
-***SG_08_1_PM_a=SCORE("Responsible investment KPIs and/or goals included in objectives", "c858db1bb851466f91a41ffb3df3441e_5", SURVEY_ID)
-***SG_08_1_PM_b=SCORE("Responsible investment included in  appraisal process", "6d51612cfda8425891eef2433ddff67f_4", SURVEY_ID)
-***SG_08_1_PM_c=SCORE("Variable pay linked to responsible investment performance", "1b02a713dd2e43cd9f247ec3bc0bc0ad_4", SURVEY_ID)
-***SG_08_1_PM_d=IFBLANK(SCORE("Responsible investment included in personal development and/or training plan", "0220bbd533bf45af844225a1138911e0_4", SURVEY_ID),0)
-***SG_08_1_PM_NO=SCORE("None of the above", "bb69988b91d84950be0aef1715742814_10", SURVEY_ID)
-***SG_08_1_IA=SCORE("Investment analysts", "eaea40e7255447228cdb7632d27ad9f3", SURVEY_ID)
-***SG_08_1_IA_a=SCORE("Responsible investment KPIs and/or goals included in objectives", "c858db1bb851466f91a41ffb3df3441e_6", SURVEY_ID)
-***SG_08_1_IA_b=SCORE("Responsible investment included in  appraisal process", "6d51612cfda8425891eef2433ddff67f_5", SURVEY_ID)
-***SG_08_1_IA_c=SCORE("Variable pay linked to responsible investment performance", "1b02a713dd2e43cd9f247ec3bc0bc0ad_5", SURVEY_ID)
-***SG_08_1_IA_d=IFBLANK(SCORE("Responsible investment included in personal development and/or training plan", "0220bbd533bf45af844225a1138911e0_5", SURVEY_ID),0)
-***SG_08_1_IA_NO=SCORE("None of the above", "bb69988b91d84950be0aef1715742814_11", SURVEY_ID)
-***SG_08_1_RI=SCORE("Dedicated responsible investment staff", "d36293dc17af4d90847ed235dd31f857", SURVEY_ID)
-***SG_08_1_RI_a=SCORE("Responsible investment KPIs and/or goals included in objectives", "c858db1bb851466f91a41ffb3df3441e_7", SURVEY_ID)
-***SG_08_1_RI_b=SCORE("Responsible investment included in  appraisal process", "6d51612cfda8425891eef2433ddff67f_6", SURVEY_ID)
-***SG_08_1_RI_c=SCORE("Variable pay linked to responsible investment performance", "1b02a713dd2e43cd9f247ec3bc0bc0ad_6", SURVEY_ID)
-***SG_08_1_RI_d=IFBLANK(SCORE("Responsible investment included in personal development and/or training plan", "0220bbd533bf45af844225a1138911e0_6", SURVEY_ID),0)
-***SG_08_1_RI_NO=SCORE("None of the above", "bb69988b91d84950be0aef1715742814_12", SURVEY_ID)
-***SG_08_1_IR=SCORE("Investor relations [Group]", "7cece493061f4e4fb3a21ec3691ae813", SURVEY_ID)
-***SG_08_1_IR_a=SCORE("Responsible investment KPIs and/or goals included in objectives", "c858db1bb851466f91a41ffb3df3441e_16", SURVEY_ID)
-***SG_08_1_IR_b=SCORE("Responsible investment included in  appraisal process", "6d51612cfda8425891eef2433ddff67f_7", SURVEY_ID)
-***SG_08_1_IR_c=SCORE("Variable pay linked to responsible investment performance", "1b02a713dd2e43cd9f247ec3bc0bc0ad_7", SURVEY_ID)
-***SG_08_1_IR_d=IFBLANK(SCORE("Responsible investment included in personal development and/or training plan", "0220bbd533bf45af844225a1138911e0_7", SURVEY_ID),0)
-***SG_08_1_IR_NO=SCORE("None of the above [Exclusive]", "3ef57053cac74c04b27bd691ba2abc57_3", SURVEY_ID)
-***SG_08_1_Oth=SCORE("Other role (1) [Group]", "91b3a68490914785bb0e3f0ba62fe494", SURVEY_ID)
-***SG_08_1_Oth_a=SCORE("Responsible investment KPIs and/or goals included in objectives", "c858db1bb851466f91a41ffb3df3441e_17", SURVEY_ID)
-***SG_08_1_Oth_b=SCORE("Responsible investment included in  appraisal process", "6d51612cfda8425891eef2433ddff67f_8", SURVEY_ID)
-***SG_08_1_Oth_c=SCORE("Variable pay linked to responsible investment performance", "1b02a713dd2e43cd9f247ec3bc0bc0ad_8", SURVEY_ID)
-***SG_08_1_Oth_d=IFBLANK(SCORE("Responsible investment included in personal development and/or trraining plan", "0220bbd533bf45af844225a1138911e0_8", SURVEY_ID),0)
-***SG_08_1_Oth_No=SCORE("None of the above [Exclusive]", "3ef57053cac74c04b27bd691ba2abc57_4", SURVEY_ID)
-***SG_08_1_Oth2=SCORE("(Other role (2) [Group]", "e67812e6135f4b13a993c0e3a89d93d4", SURVEY_ID)
-***SG_08_1_Oth2_a=SCORE("Responsible investment KPIs and/or goals included in objectives", "c858db1bb851466f91a41ffb3df3441e_18", SURVEY_ID)
-***SG_08_1_Oth2_b=SCORE("Responsible investment included in  appraisal process", "6d51612cfda8425891eef2433ddff67f_16", SURVEY_ID)
-***SG_08_1_Oth2_c=SCORE("Variable pay linked to responsible investment performance", "1b02a713dd2e43cd9f247ec3bc0bc0ad_16", SURVEY_ID)
-***SG_08_1_Oth2_d=IFBLANK(SCORE("Responsible investment included in personal development and/or training plan", "0220bbd533bf45af844225a1138911e0_16", SURVEY_ID),0)
-***SG_08_1_Oth2_NO=SCORE("None of the above [Exclusive]", "3ef57053cac74c04b27bd691ba2abc57_5", SURVEY_ID)
-***SG_08_Over_Score=VALUE(
-IF((SG_07_CEO_O<>"")AND(SG_08_1_CEO_a<>""),1,
-IF((SG_07_CEO_O<>"")AND(SG_08_1_CEO_b<>""),1,
-IF((SG_07_CEO_O<>"")AND(SG_08_1_CEO_c<>""),1,
-IF((SG_07_Clevel_O<>"")AND(SG_08_1_CLev_a<>""),1,
-IF((SG_07_Clevel_O<>"")AND(SG_08_1_CLev_b<>""),1,
-IF((SG_07_Clevel_O<>"")AND(SG_08_1_CLev_c<>""),1,
-IF((SG_07_PM_O<>"")AND(SG_08_1_PM_a<>""),1,
-IF((SG_07_PM_O<>"")AND(SG_08_1_PM_b<>""),1,
-IF((SG_07_PM_O<>"")AND(SG_08_1_PM_c<>""),1,
-0,
-))))))))))
-***SG_08_Over_Score2=VALUE(
-IF((SG_07_IA_O<>"")AND(SG_08_1_IA_a<>""),1,
-IF((SG_07_IA_O<>"")AND(SG_08_1_IA_b<>""),1,
-IF((SG_07_IA_O<>"")AND(SG_08_1_IA_c<>""),1,
-IF((SG_07_RI_O<>"")AND(SG_08_1_RI_a<>""),1,
-IF((SG_07_RI_O<>"")AND(SG_08_1_RI_b<>""),1,
-IF((SG_07_RI_O<>"")AND(SG_08_1_RI_c<>""),1,
-IF((SG_07_IR_O<>"")AND(SG_08_1_IR_a<>""),1,
-IF((SG_07_IR_O<>"")AND(SG_08_1_IR_b<>""),1,
-IF((SG_07_IR_O<>"")AND(SG_08_1_IR_c<>""),1,
-0,
-))))))))))
-***SG_08_Over_Score3=VALUE(
-IF((SG_07_Other1_O<>"")AND(SG_08_1_Oth_a<>""),1,
-IF((SG_07_Other1_O<>"")AND(SG_08_1_Oth_b<>""),1,
-IF((SG_07_Other1_O<>"")AND(SG_08_1_Oth_c<>""),1,
-IF((SG_07_Other2_O<>"")AND(SG_08_1_Oth2_a<>""),1,
-IF((SG_07_Other2_O<>"")AND(SG_08_1_Oth2_b<>""),1,
-IF((SG_07_Other2_O<>"")AND(SG_08_1_Oth2_c<>""),1,0,)))))))
-***SG_08_Imp_Score=VALUE(
-IF((SG_07_CEO_I<>"")AND(SG_08_1_CEO_a<>""),1,
-IF((SG_07_CEO_I<>"")AND(SG_08_1_CEO_b<>""),1,
-IF((SG_07_CEO_I<>"")AND(SG_08_1_CEO_c<>""),1,
-IF((SG_07_Clevel_I<>"")AND(SG_08_1_CLev_a<>""),1,
-IF((SG_07_Clevel_I<>"")AND(SG_08_1_CLev_b<>""),1,
-IF((SG_07_Clevel_I<>"")AND(SG_08_1_CLev_c<>""),1,
-IF((SG_07_PM_I<>"")AND(SG_08_1_PM_a<>""),1,
-IF((SG_07_PM_I<>"")AND(SG_08_1_PM_b<>""),1,
-IF((SG_07_PM_I<>"")AND(SG_08_1_PM_c<>""),1,
-0,
-))))))))))
-***SG_08_Imp_Score2=VALUE(
-IF((SG_07_IA_I<>"")AND(SG_08_1_IA_a<>""),1,
-IF((SG_07_IA_I<>"")AND(SG_08_1_IA_b<>""),1,
-IF((SG_07_IA_I<>"")AND(SG_08_1_IA_c<>""),1,
-IF((SG_07_RI_I<>"")AND(SG_08_1_RI_a<>""),1,
-IF((SG_07_RI_I<>"")AND(SG_08_1_RI_b<>""),1,
-IF((SG_07_RI_I<>"")AND(SG_08_1_RI_c<>""),1,
-IF((SG_07_IR_I<>"")AND(SG_08_1_IR_a<>""),1,
-IF((SG_07_IR_I<>"")AND(SG_08_1_IR_b<>""),1,
-IF((SG_07_IR_I<>"")AND(SG_08_1_IR_c<>""),1,
-0,
-))))))))))
-***SG_08_Imp_Score3=VALUE(
-IF((SG_07_Other1_I<>"")AND(SG_08_1_Oth_a<>""),1,
-IF((SG_07_Other1_I<>"")AND(SG_08_1_Oth_b<>""),1,
-IF((SG_07_Other1_I<>"")AND(SG_08_1_Oth_c<>""),1,
-IF((SG_07_Other2_I<>"")AND(SG_08_1_Oth2_a<>""),1,
-IF((SG_07_Other2_I<>"")AND(SG_08_1_Oth2_b<>""),1,
-IF((SG_07_Other2_I<>"")AND(SG_08_1_Oth2_c<>""),1,0,)))))))
-***SG_08_Over_subscore=IF(((SG_08_Over_Score)=1)OR((SG_08_Over_Score2)=1)OR((SG_08_Over_Score3)=1),1,0)
-***SG_08_Imp_subscore=IF(((SG_08_Imp_Score)=1)OR((SG_08_Imp_Score2)=1)OR((SG_08_Imp_Score3)=1),1,0)
-***SG_08_Board=VALUE(
-IF((SG_07_Board<>"")AND(SG_07_CEO_O="")AND(SG_07_Clevel_O="")AND(SG_07_PM_O="")AND(SG_07_IA_O="")AND(SG_07_RI_O="")AND(SG_07_IR_O="")AND(SG_07_Other1_O="")AND(SG_07_Other2_O=""),1,0))
-***SG_08_subscore2=VALUE(
-IF((SG_08_Over_subscore=0)AND(SG_08_Imp_subscore=1)AND(SG_08_Board=1),1,0
-))
-***SG_08_subscore=VALUE(SG_08_Over_subscore)+VALUE(SG_08_Imp_subscore)+VALUE(SG_08_subscore2)
-
-***SG_08.a_SCORE=VALUE(
-IF((SG_08_subscore)<1, 0,
-IF((SG_08_subscore)<2, 2,
-IF((SG_08_subscore)<=3, 3
-))))
-
-***SG_07_B_Y=IF((SG_07_Board_O<>"")OR(SG_07_Board_I<>""),1,0)
-***SG_07_C_Y=IF((SG_07_CEO_O<>"")OR(SG_07_CEO_I<>""),1,0)
-***SG_07_CL_Y=IF((SG_07_Clevel_O<>"")OR(SG_07_Clevel_I<>""),1,0)
-***SG_07_PM_Y=IF((SG_07_PM_O<>"")OR(SG_07_PM_I<>""),1,0)
-***SG_07_IA_Y=IF((SG_07_IA_O<>"")OR(SG_07_IA_I<>""),1,0)
-***SG_07_RI_Y=IF((SG_07_RI_O<>"")OR(SG_07_RI_I<>""),1,0)
-***SG_07_IR_Y=IF((SG_07_IR_O<>"")OR(SG_07_IR_I<>""),1,0)
-***SG_07_O1_Y=IF((SG_07_Other1_O<>"")OR(SG_07_Other1_I<>""),1,0)
-***SG_07_O2_Y=IF((SG_07_Other2_O<>"")OR(SG_07_Other2_I<>""),1,0)
-***SG_07_EM_Y=IF((SG_07_EM_O<>"")OR(SG_07_EM_I<>""),1,0)
-
-***SG_07b_denom=VALUE(SG_07_B_Y)+VALUE(SG_07_C_Y)+VALUE(SG_07_CL_Y)+VALUE(SG_07_PM_Y)+VALUE(SG_07_IA_Y)+VALUE(SG_07_RI_Y)+VALUE(SG_07_IR_Y)+VALUE(SG_07_O1_Y)+VALUE(SG_07_O2_Y)
-
-***SG_08_1_Board_All=IF((VALUE(SG_08_1_Board_d)>=100),100,0)
-***SG_08_1_CEO_All=IF((VALUE(SG_08_1_CEO_d)>=100),100,0)
-***SG_08_1_Clev_All=IF((VALUE(SG_08_1_Clev_d)>=100),100,0)
-***SG_08_1_PM_All=IF((VALUE(SG_08_1_PM_d)>=100),100,0)
-***SG_08_1_IA_All=IF((VALUE(SG_08_1_IA_d)>=100),100,0)
-***SG_08_1_RI_All=IF((VALUE(SG_08_1_RI_d)>=100),100,0)
-***SG_08_1_IR_All=IF((VALUE(SG_08_1_IR_d)>=100),100,0)
-***SG_08_1_Oth_All=IF((VALUE(SG_08_1_Oth_d)>=100),100,0)
-***SG_08_1_Oth2_All=IF((VALUE(SG_08_1_Oth2_d)>=100),100,0)
-
-***SG_08b_numer_sum=VALUE(SG_08_1_Board_All)+VALUE(SG_08_1_CEO_All)+VALUE(SG_08_1_CLev_All)+VALUE(SG_08_1_PM_All)+VALUE(SG_08_1_IA_All)+VALUE(SG_08_1_RI_All)+VALUE(SG_08_1_IR_All)+VALUE(SG_08_1_Oth_All)+VALUE(SG_08_1_Oth2_All)
-***SG_08b_numer=VALUE(
-IF((SG_08b_numer_sum)=0, 0,
-IF((SG_08b_numer_sum)=100, 1,
-IF((SG_08b_numer_sum)=200, 2,
-IF((SG_08b_numer_sum)=300, 3,
-IF((SG_08b_numer_sum)=400, 4,
-IF((SG_08b_numer_sum)=500, 5,
-IF((SG_08b_numer_sum)=600, 6,
-IF((SG_08b_numer_sum)=700, 7,
-IF((SG_08b_numer_sum)=800, 8,
-IF((SG_08b_numer_sum)=900, 9,)))))))))))
-***SG_08b_val=DIVIDE(SG_08b_numer, SG_07b_denom)
-
-***SG_08.b_SCORE=VALUE(
-IF((SG_08b_val)=0,0,
-IF((SG_08b_val)<=0.33,1,
-IF((SG_08b_val)<=0.66,2,
-IF((SG_08b_val)>0.66,3,0)))))
-
+/* SG 09 scoring */
 
 ***SG_09_1_PRI=SCORE("Principles for Responsible Investment", "58b3484e7fef4eb4835de409d6a4e1ff_19", SURVEY_ID)
 ***SG_09_1_PRI_B=SCORE("Basic", "bd9004aa9ed74d46bf2f31bd2e8a08eb_43", SURVEY_ID)
@@ -547,39 +350,7 @@ IF((SG_09_MODERATE_Sum=1),2,
 IF((SG_09_BASIC_Sum=1),1,0
 ))))
 
-
-***SG_10_a=IFBLANK(SCORE("Provided or supported education or training programmes for clients, investment managers, broker/dealers, investment consultants, legal advisers or other investment organisations", "81a1072ad8b2472393087bfba69918a9", SURVEY_ID),0)
-***SG_10_b=IFBLANK(SCORE("Provided  financial support for  academic or industry research on responsible investment", "f25331dc9c604bd3829b6febb9dc3008", SURVEY_ID),0)
-***SG_10_c=IFBLANK(SCORE("Provided input and/or collaborated with academia on RI related work", "723663eb7ace4a9e8bcff3f5d8b11bd2", SURVEY_ID),0)
-***SG_10_d=IFBLANK(SCORE("Encouraged better transparency and disclosure of responsible investment practices across the investment industry", "8eb3ddb05a0d4bb2b1933ea47a62c81c", SURVEY_ID),0)
-***SG_10_e=IFBLANK(SCORE("Spoke publicly at events and conferences to promote responsible investment", "a63d785437df45858d84352489cb85cf", SURVEY_ID),0)
-***SG_10_f=IFBLANK(SCORE("Wrote and published in-house research papers on responsible investment", "361ee29275ef4bcb81a9ff506b198ce6", SURVEY_ID),0)
-***SG_10_g=IFBLANK(SCORE("Encouraged the adoption of the PRI", "4663e75f6d2f44cd9805b9a0de546ff9", SURVEY_ID),0)
-***SG_10_h=IFBLANK(SCORE("Responded to RI related consultations by non-governmental organisations (OECD, FSB etc)", "572351eca5bb4ff3a633a15b0720b0b0", SURVEY_ID),0)
-***SG_10_i=IFBLANK(SCORE("Wrote articles on responsible investment in the media", "7e2d79ab04ed4fe8b746b7243c1d224d", SURVEY_ID),0)
-***SG_10_j=IFBLANK(SCORE("A member of PRI advisory committees/ working groups, specify", "9c02109c81104633b985b0d346bf8419", SURVEY_ID),0)
-***SG_10_k=IFBLANK(SCORE("On the Board of, or officially advising, other RI organisations (eg local SIFs)", "16e7afdca7c44603ac7e74342fea2389", SURVEY_ID),0)
-***SG_10_l=IFBLANK(SCORE("Other, specify", "25d0fb35432c441984923b7f0d459840", SURVEY_ID),0)
-***SG_10_sum=VALUE(SG_10_a)+VALUE(SG_10_b)+VALUE(SG_10_c)+VALUE(SG_10_d)+VALUE(SG_10_e)+VALUE(SG_10_f)+VALUE(SG_10_g)+VALUE(SG_10_h)+VALUE(SG_10_i)+VALUE(SG_10_j)+VALUE(SG_10_k)+VALUE(SG_10_l)
-***SG_10_SCORE=VALUE(
-IF((SG_10_sum<100), 0,
-IF((SG_10_sum<300), 2,
-IF((SG_10_sum>=300), 3,0
-))))
-
-***SG_11_1_Yes=RESPONSE("Yes", "d2b8f1e6c65742d0a7bff7de32b69acc_1", SURVEY_ID)
-***SG_11_1_No=IFBLANK(SCORE("No", "64b49cc778954418bcfaddeeb6ecd23a", SURVEY_ID),0)
-***SG_11_2=RESPONSE("Methods checkboxes", "7e6f2c8dcafe4aa8adb1aa03fda015f9", SURVEY_ID)
-***SG_11_3_A=SCORE("Yes, publicly available Choice", "c838602d02ec44be8abee35dcca0f18f_1", SURVEY_ID)
-***SG_11_3_B=SCORE("No, not publicly available Choice", "638d5d0f99004d28aad11fd796bfc745_1", SURVEY_ID)
-***SG_11_3_Complete=VALUE(IF((SG_11_3_A=100) OR (SG_11_3_B=100), 1, 0))
-***SG_11_4=RESPONSE("Text", "c0f060ee750a4fa4af89babbd5d3edd4", SURVEY_ID)
-
-***SG_11_SCORE=VALUE(
-IF((SG_11_1_No>0),0,
-IF(SG_11_1_Yes<>""AND((SG_11_2<>"")OR(SG_11_3_Complete>0)OR(SG_11_4<>"")),3,0)))
-
-/* SG 11 methodology has stayed the same but it seems that the scoring methodology was incorrect in 2018 so 2019 is calculating differently. This might cause changes to additional assessed performance, so worth checking how distribution of SG bands are at the end to decide whether to keep correct SG 11 scoring above or to rever to 2018. */ 
+/* SG 14 scoring */
 
 ***SG_14_1_A=SCORE("14.2_A1__Changing_Demographics)Changing demographics", "d4ed96853fc246f199f4363ad3aa68a1_1", SURVEY_ID)
 ***SG_14_1_B=SCORE("14.2_A2__Climate_Change_And_Related_Issues)Climate change and related issues", "d4ed96853fc246f199f4363ad3aa68a1_2", SURVEY_ID)
@@ -617,6 +388,9 @@ IF(SG_11_1_Yes<>""AND((SG_11_2<>"")OR(SG_11_3_Complete>0)OR(SG_11_4<>"")),3,0)))
 ***SG_14_ThreeStar=VALUE(IF((SG_14_2_SUM>0)AND(SG_14_3_SUM>0),300,0))
 
 ***SG_14_SCORE=VALUE(IF(SG_14_ZeroStar=100,0,IF(SG_14_ThreeStar>SG_14_TwoStar,3,IF(SG_14_TwoStar>SG_14_ZeroStar,2,0))))
+***SG_14_NA_FLAG=VALUE(IF(SG_14_1_B<>"",0,1))
+
+/* CM 01 scoring */
 
 ***CM_01_A=SCORE("Independent assurance by a third party over selected responses from this year’s PRI Transparency Report", "853132aba3f04e568587d179bc880ec6", SURVEY_ID)
 ***CM_01_B=SCORE("(ndependent assurance by a third party over data points from other sources that have subsequently been used in your PRI responses this year", "41aee56b6abd42dbbf0cd803686db83e", SURVEY_ID)
@@ -633,38 +407,36 @@ IF(((CM_01_F)=100)OR((CM_01_G)=100), 0,
 IF((CM_01_SUM)=0,0,0
 )))))
 
-***CORE_TOTAL=VALUE(SG_01_SCORE)+VALUE(SG_02_SCORE)+VALUE(SG_03_SCORE)+VALUE(SG_05_SCORE)+VALUE(SG_07_SCORE)+VALUE(SG_09_SCORE)+VALUE(SG_10_SCORE)
-
-***ADD_SORT3=SUM_SORT(3, SG_08.a_SCORE, SG_08.b_SCORE, SG_11_SCORE, SG_14_SCORE, CM_01_SCORE,0,0,0,0)
-
-***SG_Add_Txt=TEXT(CONCATENATE_SORT(3, TEXT(SG_08.a_SCORE)+"|SG 08.a", TEXT(SG_08.b_SCORE)+"|SG 08.b", TEXT(SG_11_SCORE)+"|SG 11", TEXT(SG_14_SCORE)+"|SG 14", TEXT(CM_01_SCORE)+"|CM 01",0,0,0,0))
-***SG_AdditionalIndics_text=TEXT(IFBLANK(SG_Add_Txt),"No Additional Indicators"))
-
-***SG_TOTAL=VALUE(CORE_TOTAL)+VALUE(ADD_SORT3)
-***SG_Denom=VALUE(30)
-***SG_Core_Inds=VALUE(7)
-***SG_Add_Inds=VALUE(3)
-***SG_Percentage=VALUE(DIVIDE(SG_TOTAL, 30)*100)
+***SG_TOTAL_CLIMATE=VALUE(SG_01_SCORE)+VALUE(SG_02_SCORE)+VALUE(SG_05_SCORE)+VALUE(SG_07_SCORE)+VALUE(SG_09_SCORE)+VALUE(SG_14_SCORE)+VALUE(CM_01_SCORE)
+***SG_TOTAL_CLIMATENA=VALUE(SG_01_SCORE)+VALUE(SG_02_SCORE)+VALUE(SG_05_SCORE)+VALUE(SG_07_SCORE)+VALUE(SG_09_SCORE)+VALUE(CM_01_SCORE)
+***SG_TOTAL=VALUE(
+IF((SG_14_NA_FLAG=0),SG_TOTAL_CLIMATE,
+IF((SG_14_NA_FLAG=1),SG_TOTAL_CLIMATENA
+)))
+***SG_Denom=VALUE(
+IF((SG_14_NA_FLAG=0),21,
+IF((SG_14_NA_FLAG=1),18
+)))
+***SG_Core_Inds=VALUE(
+IF((SG_14_NA_FLAG=0),7,
+IF((SG_14_NA_FLAG=1),6
+)))
+***SG_Add_Inds=VALUE(0)
+***SG_Percentage=VALUE(DIVIDE(SG_TOTAL, SG_Denom)*100)
 ***19_SG_BAND=TEXT(
-IF((OO_12_1_SG=0), "NR",
 IF((SG_Percentage)=0, "E",
 IF((SG_Percentage)<=25, "D",
 IF((SG_Percentage)<=50, "C",
 IF((SG_Percentage)<=75, "B",
 IF((SG_Percentage)<95, "A",
 IF((SG_Percentage)>=95, "A+"
-))))))))
+)))))))
 
 /* Below are TEXT versions of the indicator scores, for the Assessment Report */
-***SG_01_SCORE_TEXT=TEXT(IF((19_SG_BAND="NR"),"NA", TEXT(SG_01_SCORE)))
-***SG_02_SCORE_TEXT=TEXT(IF((19_SG_BAND="NR"),"NA", TEXT(SG_02_SCORE)))
-***SG_03_SCORE_TEXT=TEXT(IF((19_SG_BAND="NR"), "NA", TEXT(SG_03_SCORE)))
-***SG_05_SCORE_TEXT=TEXT(IF((19_SG_BAND="NR"), "NA", TEXT(SG_05_SCORE)))
-***SG_07_SCORE_TEXT=TEXT(IF((19_SG_BAND="NR"), "NA", TEXT(SG_07_SCORE)))
-***SG_08.a_SCORE_TEXT=TEXT(IF((19_SG_BAND="NR"), "NA", TEXT(SG_08.a_SCORE)))
-***SG_08.b_SCORE_TEXT=TEXT(IF((19_SG_BAND="NR"), "NA", TEXT(SG_08.b_SCORE)))
-***SG_09_SCORE_TEXT=TEXT(IF((19_SG_BAND="NR"), "NA", TEXT(SG_09_SCORE)))
-***SG_10_SCORE_TEXT=TEXT(IF((19_SG_BAND="NR"), "NA", TEXT(SG_10_SCORE)))
-***SG_11_SCORE_TEXT=TEXT(IF((19_SG_BAND="NR"), "NA", TEXT(SG_11_SCORE)))
-***SG_14_SCORE_TEXT=TEXT(IF((19_SG_BAND="NR"), "NA", TEXT(SG_14_SCORE)))
-***CM_01_SCORE_TEXT=TEXT(IF((19_SG_BAND="NR"), "NA", TEXT(CM_01_SCORE))) 
+***SG_01_SCORE_TEXT=TEXT(SG_01_SCORE)
+***SG_02_SCORE_TEXT=TEXT(SG_02_SCORE)
+***SG_05_SCORE_TEXT=TEXT(SG_05_SCORE)
+***SG_07_SCORE_TEXT=TEXT(SG_07_SCORE)
+***SG_09_SCORE_TEXT=TEXT(SG_09_SCORE)
+***SG_14_SCORE_TEXT=TEXT(SG_14_SCORE)
+***CM_01_SCORE_TEXT=TEXT(CM_01_SCORE)
