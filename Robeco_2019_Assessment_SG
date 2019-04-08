@@ -440,3 +440,14 @@ IF((SG_Percentage)>=95, "A+"
 ***SG_09_SCORE_TEXT=TEXT(SG_09_SCORE)
 ***SG_14_SCORE_TEXT=TEXT(SG_14_SCORE)
 ***CM_01_SCORE_TEXT=TEXT(CM_01_SCORE)
+
+/* Section scores */
+
+***RI_Policy_Section_sum=VALUE(SG_01_SCORE)+VALUE(SG_02_SCORE)
+***RI_Policy_Section=ROUND(DIVIDE(RI_Policy_Section_sum,2))
+***Objectives_Section=VALUE(SG_05_SCORE)
+***HR_Section=VALUE(SG_07_SCORE)
+***Promoting_Section=VALUE(SG_09_SCORE)
+***ESG_issues_in_asset_allocation_section=VALUE(SG_14_SCORE)
+***Assurance_Section=VALUE(CM_01_score)
+
