@@ -234,17 +234,6 @@ IF((PE_12_ADHOC>1),1,0
 IF((PE_13_Y=3),3,0
 ))
 
-/* PE 14 scoring */
-
-***PE_14_1_a=SCORE("We measure whether our approach to ESG issues impacts funds’ financial performance", "98cfde45fe8643a3aff81b5226bebc96_1", SURVEY_ID)
-***PE_14_1_b=SCORE("We measure whether our approach to ESG issues impacts funds’ ESG performance", "d4020d6bf6694c07be704eeecc0b237c_1", SURVEY_ID)
-***PE_14_SCORE=VALUE(
-IF((PE_14_1_a=100) AND (PE_14_1_b=100),3,
-IF((PE_14_1_a="") AND (PE_14_1_b=""),0,
-IF((PE_14_1_a=0) AND (PE_14_1_b=0),0,
-IF((PE_14_1_a=0) OR (PE_14_1_b=0),2, 0,
-)))))
-
 /* PE 15 scoring */
 
 /* The stages of investment processes are provided to ensure ESG issues covers at least two different stages */
@@ -444,14 +433,14 @@ IF((PE_04_NA_FLAG=1)AND(PE_13_NA_FLAG=1),1,0))
 
 /* Totalling additional numerators for all scenarios, and also creating the text to display for the best "x" additional indicators */
 
-***Sort_3=SUM_SORT(3, PE_04_SCORE, PE_07_SCORE, PE_08_SCORE, PE_11_SCORE, PE_12_SCORE, PE_13_SCORE, PE_14_SCORE, PE_15_SCORE)
-***Sort_3_Text=CONCATENATE_SORT(3,TEXT(PE_04_SCORE)+"|PE 04",TEXT(PE_07_SCORE)+"|PE 07",TEXT(PE_08_SCORE)+"|PE 08",TEXT(PE_11_SCORE)+"|PE 11",TEXT(PE_12_SCORE)+"|PE 12",TEXT(PE_13_SCORE)+"|PE 13",TEXT(PE_14_SCORE)+"|PE 14",TEXT(PE_15_SCORE)+"|PE 15")
+***Sort_2=SUM_SORT(2, PE_04_SCORE, PE_07_SCORE, PE_08_SCORE, PE_11_SCORE, PE_12_SCORE, PE_13_SCORE, PE_15_SCORE)
+***Sort_2_Text=CONCATENATE_SORT(2,TEXT(PE_04_SCORE)+"|PE 04",TEXT(PE_07_SCORE)+"|PE 07",TEXT(PE_08_SCORE)+"|PE 08",TEXT(PE_11_SCORE)+"|PE 11",TEXT(PE_12_SCORE)+"|PE 12",TEXT(PE_13_SCORE)+"|PE 13",TEXT(PE_15_SCORE)+"|PE 15")
 
 /* Below are used in Assessment Report text box or for testing */
 
 ***PE_Total=VALUE(
-IF((A_CORE_FLAG=1),VALUE(A_CORE_TOTAL)+VALUE(Sort_3),
-IF((B_CORE_FLAG=1),VALUE(B_CORE_TOTAL)+VALUE(Sort_3),0
+IF((A_CORE_FLAG=1),VALUE(A_CORE_TOTAL)+VALUE(Sort_2),
+IF((B_CORE_FLAG=1),VALUE(B_CORE_TOTAL)+VALUE(Sort_2),0
 )))
 
 ***PE_Denom=VALUE(
@@ -469,9 +458,9 @@ IF((A_CORE_FLAG=1),6,
 IF((B_CORE_FLAG=1),5,0
 )))
 
-***PE_AdditionalIndics=VALUE(3)
+***PE_AdditionalIndics=VALUE(2)
 
-***PE_AdditionalIndics_text=TEXT(Sort_3_Text)
+***PE_AdditionalIndics_text=TEXT(Sort_2_Text)
 
 ***PE_Percentage=VALUE(DIVIDE(PE_Total,PE_Denom)*100)
 
@@ -497,7 +486,6 @@ IF((PE_Percentage)>=95, "A+","Unknown"
 ***PE_11_SCORE_TEXT=TEXT(IF((19_PE_BAND="NA")OR(19_PE_BAND="NR"),"NA",IF((19_PE_BAND="E"),"0", TEXT(PE_11_SCORE))))
 ***PE_12_SCORE_TEXT=TEXT(IF((19_PE_BAND="NA")OR(19_PE_BAND="NR"),"NA",IF((19_PE_BAND="E"),"0", TEXT(PE_12_SCORE))))
 ***PE_13_SCORE_TEXT=TEXT(IF((19_PE_BAND="NA")OR(19_PE_BAND="NR")OR(PE_13_NA_FLAG=1),"NA",IF((19_PE_BAND="E"),"0", TEXT(PE_13_SCORE))))
-***PE_14_SCORE_TEXT=TEXT(IF((19_PE_BAND="NA")OR(19_PE_BAND="NR"),"NA",IF((19_PE_BAND="E"),"0", TEXT(PE_14_SCORE))))
 ***PE_15_SCORE_TEXT=TEXT(IF((19_PE_BAND="NA")OR(19_PE_BAND="NR"),"NA",IF((19_PE_BAND="E"),"0", TEXT(PE_15_SCORE))))
 ***PE_SG_19_SCORE_TEXT=TEXT(IF((19_PE_BAND="NA")OR(19_PE_BAND="NR"),"NA",IF((19_PE_BAND="E"),"0", TEXT(PE_SG_19_SCORE))))
 
@@ -506,16 +494,32 @@ IF((PE_Percentage)>=95, "A+","Unknown"
 ***PE_Over_Section=VALUE(PE_02_SCORE)
 ***PE_FR_Section_Sum=VALUE(PE_03_SCORE)+VALUE(PE_04_SCORE)
 ***PE_FR_Section_Denom=VALUE(
-IF(((PE_03_NA_FLAG=1),0,
+IF((PE_03_NA_FLAG=1),0,
 IF((PE_04_NA_FLAG=1),1,2
-))))
+)))
 ***PE_FR_Section=VALUE(
 IF((PE_03_NA_FLAG=1),0, DIVIDE(PE_FR_Section_Sum,PE_FR_Section_Denom)))
 ***PE_Pre_Section_Sum=VALUE(PE_06_SCORE)+VALUE(PE_07_SCORE)+VALUE(PE_08_SCORE)
 ***PE_Pre_Section=DIVIDE(PE_Pre_Section_Sum,3)
 ***PE_Post_Section_Sum=VALUE(PE_09_SCORE)+VALUE(PE_10_SCORE)+VALUE(PE_11_SCORE)+VALUE(PE_12_SCORE)+VALUE(PE_13_SCORE)
-***PE_Post_Section_Denom=VALUE(IF(((PE_13_NA_FLAG=1),4,5)))
+***PE_Post_Section_Denom=VALUE(
+IF((PE_13_NA_FLAG=1),4,5))
 ***PE_Post_Section=DIVIDE(PE_Post_Section_Sum,PE_Post_Section_Denom)
-***PE_Out_Section_sum=VALUE(PE_14_SCORE)+VALUE(PE_15_SCORE)
-***PE_Out_Section=DIVIDE(PE_Out_Section_sum,2)
+***PE_Out_Section=VALUE(PE_15_SCORE)
 ***PE_Com_Section=VALUE(PE_SG_19_SCORE)
+
+***Venture_Capital=RESPONSE("OO PE 01", "8668db82150e43bf9a2ab931cd90f88a", SURVEY_ID)
+***Growth_Capital=RESPONSE("", "8668db82150e43bf9a2ab931cd90f88a_1", SURVEY_ID)
+***Leveraged_buyout=RESPONSE("", "8668db82150e43bf9a2ab931cd90f88a_2", SURVEY_ID)
+***Distressed=RESPONSE("", "8668db82150e43bf9a2ab931cd90f88a_5", SURVEY_ID)
+***Secondaries=RESPONSE("", "8668db82150e43bf9a2ab931cd90f88a_6", SURVEY_ID)
+***Other1=RESPONSE("", "8668db82150e43bf9a2ab931cd90f88a_3", SURVEY_ID)
+***Other2=RESPONSE("", "8668db82150e43bf9a2ab931cd90f88a_4", SURVEY_ID)
+***Main_Strategy=TEXT(
+IF((Venture_Capital=">50%"),"Venture Capital",
+IF((Growth_Capital=">50%"),"Growth Capital",
+IF((Leveraged_buyout=">50%"),"Leveraged Buyout",
+IF((Distressed=">50%"),"Distressed",
+IF((Secondaries=">50%"),"Secondaries",
+IF((Other1=">50%"),"Other","Mixed"
+)))))))
