@@ -54,7 +54,7 @@
 ***SG_02_SCORE=VALUE(
 IF((SG_02_NO>0),0,
 IF((SG_02_Sum>0),3,0
-))))
+)))
 
 /* SG 05 scoring */
 
