@@ -1,167 +1,72 @@
-***SURVEY_ID=("a01f3eb1-bd2a-4a84-b130-e08bac9b67ec")
-***UserEntryIDfor2017surveys=TEXT(USER_ENTRY_ID("901453e0-e25e-400b-a626-47eafa390545"))
+***2019_SURVEY_ID="39d6c4c6-961b-436b-bc66-b2672d365e6f"
+***2019_USER_ENTRY_ID=TEXT(USER_ENTRY_ID("39d6c4c6-961b-436b-bc66-b2672d365e6f"))
+***2018_USER_ENTRY_ID=TEXT(USER_ENTRY_ID("b0b55772-bb3f-4bb8-a15b-ab0dacfe4f02"))
 ***DISPLAY_NAME=DISPLAY_NAME()
 ***SUBMITTED=SUBMITTED()
+
+/* Category information */
 ***Signatory_Type=TEXT(
 IF(PARTICIPANT_FIELD(1)="IM", "Investment Manager",
 IF(PARTICIPANT_FIELD(1)="AO", "Asset Owner")))
-***Category_IM=RESPONSE("PRI reporting framework 2013/2014: (OO_01.1_B) Q01.1 Select the services you offer. Checkboxes", "b78842c344f74aa790c6e9dc33468190", SURVEY_ID)
-***FM_50=RESPONSE("PRI reporting framework 2013/2014 (Template - 3 surveys): (OO_01.1_B13) Q >50% Choice", "24a975bba0e64a66b45fea8160c73afb", SURVEY_ID)
-***FOF_50=RESPONSE("PRI reporting framework 2013/2014 (Template - 3 surveys): (OO_01.1_B23) Q >50% Choice", "24a975bba0e64a66b45fea8160c73afb_2", SURVEY_ID)
-***Other_50=RESPONSE("PRI reporting framework 2013/2014 (Template - 3 surveys): (OO_01.1_B34) Q >50% Choice", "24a975bba0e64a66b45fea8160c73afb_3", SURVEY_ID)
+***FM_50=RESPONSE("(>50% Choice", "24a975bba0e64a66b45fea8160c73afb", 2019_SURVEY_ID)
+***FOF_50=RESPONSE(">50% Choice", "24a975bba0e64a66b45fea8160c73afb_2", 2019_SURVEY_ID)
+***Other_50=RESPONSE(">50% Choice", "24a975bba0e64a66b45fea8160c73afb_3", 2019_SURVEY_ID)
 ***Category=TEXT(
 IF((Signatory_Type="Investment Manager") AND (FM_50=">50%"), "Fund Management - Majority",
 IF((Signatory_Type="Investment Manager") AND (FOF_50=">50%"), "Fund of funds, manager of managers, sub-advised products - Majority",
 IF((Signatory_Type="Investment Manager") AND (Other_50=">50%"), "Other", 
 IF((Signatory_Type="Investment Manager") AND (Category_IM="Execution and advisory only services"),"Execution and advisory only services","Mixed Services",
 )))))
-***RegionRobeco=TEXT(PARTICIPANT_FIELD(25))
 ***Region=TEXT(PARTICIPANT_FIELD(16))
 ***Country=TEXT(PARTICIPANT_FIELD(6))
-***PE_internal=RESPONSE_IGNORE_STATUS("(OO_05.1_F1_A) Q (no name)","67c7896f98114999a55bf099023d8975_44",SURVEY_ID)
-***PE_External=RESPONSE_IGNORE_STATUS("(OO_05.1_F2_A) Q (no name)","67c7896f98114999a55bf099023d8975_45",SURVEY_ID)
-***PR_Internal=RESPONSE_IGNORE_STATUS("(OO_05.1_G1_A) Q (no name)","67c7896f98114999a55bf099023d8975_46",SURVEY_ID)
-***PR_External=RESPONSE_IGNORE_STATUS("(OO_05.1_G2_A) Q (no name)","67c7896f98114999a55bf099023d8975_47",SURVEY_ID)
-***Inf_Internal=RESPONSE_IGNORE_STATUS("(OO_05.1_H1_A) Q (no name)","67c7896f98114999a55bf099023d8975_48",SURVEY_ID)
-***Inf_External=RESPONSE_IGNORE_STATUS("(OO_05.1_H2_A) Q (no name)","67c7896f98114999a55bf099023d8975_49",SURVEY_ID)
-***Far_Internal=RESPONSE_IGNORE_STATUS("(OO_05.1_L1_A) Q (no name)","67c7896f98114999a55bf099023d8975_56",SURVEY_ID)
-***Far_External=RESPONSE_IGNORE_STATUS("(OO_05.1_L2_A) Q (no name)","67c7896f98114999a55bf099023d8975_57",SURVEY_ID)
-***Cash_Internal=RESPONSE_IGNORE_STATUS("(OO_05.1_N1_A) Q (no name)","67c7896f98114999a55bf099023d8975_38",SURVEY_ID)
-***Cash_External=RESPONSE_IGNORE_STATUS("(OO_05.1_N2_A) Q (no name)","67c7896f98114999a55bf099023d8975_39",SURVEY_ID)
-***Other_Internal=RESPONSE_IGNORE_STATUS("(OO_05.1_O1_A) Q (no name)","67c7896f98114999a55bf099023d8975_40",SURVEY_ID)
-***Other_External=RESPONSE_IGNORE_STATUS("(OO_05.1_O2_A) Q (no name)","67c7896f98114999a55bf099023d8975_41",SURVEY_ID)
-***Venture Capital=IMPORT_TEXT(Robeco_2018_Assessment_PE,Venture_Capital)
-***Growth Capital=IMPORT_TEXT(Robeco_2018_Assessment_PE,Growth_Capital)
-***Leveraged Buyout=IMPORT_TEXT(Robeco_2018_Assessment_PE,Leveraged_buyout)
-***Distressed=IMPORT_TEXT(Robeco_2018_Assessment_PE,Distressed)
-***Secondaries=IMPORT_TEXT(Robeco_2018_Assessment_PE,Secondaries)
-***Other1=IMPORT_TEXT(Robeco_2018_Assessment_PE,Other1)
-***Other2=IMPORT_TEXT(Robeco_2018_Assessment_PE,Other2)
-***Main Strategy=IMPORT_TEXT(Robeco_2018_Assessment_PE,Main_Strategy)
-***17_SG_Level=IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG_Level,UserEntryIDfor2017surveys)
-***17_PE_Level=IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE_Level,UserEntryIDfor2017surveys)
-***17_SG1_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG1_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG1_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG1_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG1_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_SG2_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG2_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG2_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG2_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG2_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_SG5_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG5_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG5_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG5_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG5_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_SG7_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG7_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG7_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG7_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG7_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_SG9_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG9_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG9_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG9_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG9_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_SG13_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG13_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG13_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG13_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,SG13_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_CM01_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,CM1_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,CM1_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,CM1_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,CM1_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_PE4_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE4_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE4_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE4_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE4_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_PE5_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE5_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE5_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE5_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE5_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_PE6_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE6_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE6_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE6_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE6_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_PE8_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE8_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE8_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE8_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE8_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_PE9_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE9_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE9_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE9_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE9_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_PE10_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE10_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE10_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE10_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE10_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_PE11_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE11_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE11_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE11_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE11_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_PE12_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE12_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE12_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE12_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE12_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_PE13_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE13_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE13_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE13_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE13_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_PE15_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE15_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE15_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE15_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE15_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_PE16_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE16_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE16_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE16_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE16_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_PE18a_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE18a_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE18a_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE18a_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE18a_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***17_PE18b_Stars=VALUE(
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE18b_Stars,UserEntryIDfor2017surveys)))="0_Stars.jpg",1,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE18b_Stars,UserEntryIDfor2017surveys)))="1_Stars.jpg",2,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE18b_Stars,UserEntryIDfor2017surveys)))="2_Stars.jpg",3,
-IF((TEXT(IMPORT_TEXT2(2017_Assessment_Brochure_Project X,PE18b_Stars,UserEntryIDfor2017surveys)))="3_Stars.jpg",4
-)))))
-***SG_Level=TEXT(IMPORT_TEXT(Robeco_2018_Assessment_SG,SG_Level_New))
-***PE_Level=TEXT(IMPORT_TEXT(Robeco_2018_Assessment_PE,PE_Level_New))
+
+/* Response information */
+***PE_internal=RESPONSE_IGNORE_STATUS("(OO_05.1_F1_A) Q (no name)","67c7896f98114999a55bf099023d8975_44",2019_SURVEY_ID)
+***PE_External=RESPONSE_IGNORE_STATUS("(OO_05.1_F2_A) Q (no name)","67c7896f98114999a55bf099023d8975_45",2019_SURVEY_ID)
+***PR_Internal=RESPONSE_IGNORE_STATUS("(OO_05.1_G1_A) Q (no name)","67c7896f98114999a55bf099023d8975_46",2019_SURVEY_ID)
+***PR_External=RESPONSE_IGNORE_STATUS("(OO_05.1_G2_A) Q (no name)","67c7896f98114999a55bf099023d8975_47",2019_SURVEY_ID)
+***Inf_Internal=RESPONSE_IGNORE_STATUS("(OO_05.1_H1_A) Q (no name)","67c7896f98114999a55bf099023d8975_48",2019_SURVEY_ID)
+***Inf_External=RESPONSE_IGNORE_STATUS("(OO_05.1_H2_A) Q (no name)","67c7896f98114999a55bf099023d8975_49",2019_SURVEY_ID)
+***Far_Internal=RESPONSE_IGNORE_STATUS("(OO_05.1_L1_A) Q (no name)","67c7896f98114999a55bf099023d8975_56",2019_SURVEY_ID)
+***Far_External=RESPONSE_IGNORE_STATUS("(OO_05.1_L2_A) Q (no name)","67c7896f98114999a55bf099023d8975_57",2019_SURVEY_ID)
+***Cash_Internal=RESPONSE_IGNORE_STATUS("(OO_05.1_N1_A) Q (no name)","67c7896f98114999a55bf099023d8975_38",2019_SURVEY_ID)
+***Cash_External=RESPONSE_IGNORE_STATUS("(OO_05.1_N2_A) Q (no name)","67c7896f98114999a55bf099023d8975_39",2019_SURVEY_ID)
+***Other_Internal=RESPONSE_IGNORE_STATUS("(OO_05.1_O1_A) Q (no name)","67c7896f98114999a55bf099023d8975_40",2019_SURVEY_ID)
+***Other_External=RESPONSE_IGNORE_STATUS("(OO_05.1_O2_A) Q (no name)","67c7896f98114999a55bf099023d8975_41",2019_SURVEY_ID)
+***Venture Capital=TEXT(IMPORT_TEXT3(Robeco_2019_Assessment_PE,"Venture_Capital",2019_USER_ENTRY_ID))
+***Growth Capital=TEXT(IMPORT_TEXT3(Robeco_2019_Assessment_PE,"Growth_Capital",2019_USER_ENTRY_ID))
+***Leveraged Buyout=TEXT(IMPORT_TEXT3(Robeco_2019_Assessment_PE,"Leveraged_buyout",2019_USER_ENTRY_ID))
+***Distressed=TEXT(IMPORT_TEXT3(Robeco_2019_Assessment_PE,"Distressed",2019_USER_ENTRY_ID))
+***Secondaries=TEXT(IMPORT_TEXT3(Robeco_2019_Assessment_PE,"Secondaries",2019_USER_ENTRY_ID))
+***Other1=TEXT(IMPORT_TEXT3(Robeco_2019_Assessment_PE,"Other1",2019_USER_ENTRY_ID))
+***Other2=TEXT(IMPORT_TEXT3(Robeco_2019_Assessment_PE,"Other2",2019_USER_ENTRY_ID))
+***Main Strategy=TEXT(IMPORT_TEXT3(Robeco_2019_Assessment_PE,"Main_Strategy",2019_USER_ENTRY_ID))
+
+/* 2018 scores */
+***18_SG_Level=TEXT(IMPORT_TEXT3(Robeco_2018_Assessment_SG,"SG_Level_New",2018_USER_ENTRY_ID))
+***18_PE_Level=TEXT(IMPORT_TEXT3(Robeco_2018_Assessment_PE,"PE_Level_New",2018_USER_ENTRY_ID))
+***18_SG1_Value=VALUE(IMPORT_VALUE3(2018_Assessment_Brochure_Project_X,"SG1_Value",2018_USER_ENTRY_ID))
+***18_SG2_Value=VALUE(IMPORT_VALUE3(2018_Assessment_Brochure_Project_X,"SG2_Value",2018_USER_ENTRY_ID))
+***18_SG5_Value=VALUE(IMPORT_VALUE3(2018_Assessment_Brochure_Project_X,"SG5_Value",2018_USER_ENTRY_ID))
+***18_SG7_Value=VALUE(IMPORT_VALUE3(2018_Assessment_Brochure_Project_X,"SG7_Value",2018_USER_ENTRY_ID))
+***18_SG9_Value=VALUE(IMPORT_VALUE3(2018_Assessment_Brochure_Project_X,"SG9_Value",2018_USER_ENTRY_ID))
+***18_SG14_Value=VALUE(IMPORT_VALUE3(2018_Assessment_Brochure_Project_X,"SG14_Value",2018_USER_ENTRY_ID))
+***18_CM01_Value=VALUE(IMPORT_VALUE3(2018_Assessment_Brochure_Project_X,"CM_01_Value",2018_USER_ENTRY_ID))
+***18_PE2_Value=VALUE(IMPORT_VALUE3(2018_Assessment_Brochure_Project_X,"PE2_Value",2018_USER_ENTRY_ID))
+***18_PE3_Value=VALUE(IMPORT_VALUE3(2018_Assessment_Brochure_Project_X,"PE3_Value",2018_USER_ENTRY_ID))
+***18_PE4_Value=VALUE(IMPORT_VALUE3(2018_Assessment_Brochure_Project_X,"PE4_Value",2018_USER_ENTRY_ID))
+***18_PE6_Value=VALUE(IMPORT_VALUE3(2018_Assessment_Brochure_Project_X,"PE6_Value",2018_USER_ENTRY_ID))
+***18_PE7_Value=VALUE(IMPORT_VALUE3(2018_Assessment_Brochure_Project_X,"PE7_Value",2018_USER_ENTRY_ID))
+***18_PE8_Value=VALUE(IMPORT_VALUE3(2018_Assessment_Brochure_Project_X,"PE8_Value",2018_USER_ENTRY_ID))
+***18_PE9_Value=VALUE(IMPORT_VALUE3(2018_Assessment_Brochure_Project_X,"PE9_Value",2018_USER_ENTRY_ID))
+***18_PE10_Value=VALUE(IMPORT_VALUE3(2018_Assessment_Brochure_Project_X,"PE10_Value",2018_USER_ENTRY_ID))
+***18_PE11_Value=VALUE(IMPORT_VALUE3(2018_Assessment_Brochure_Project_X,"PE11_Value",2018_USER_ENTRY_ID))
+***18_PE13_Value=VALUE(IMPORT_VALUE3(2018_Assessment_Brochure_Project_X,"PE13_Value",2018_USER_ENTRY_ID))
+***18_PE14_Value=VALUE(IMPORT_VALUE3(2018_Assessment_Brochure_Project_X,"PE14_Value",2018_USER_ENTRY_ID))
+
+/* 2019 scores */
+***SG_Level=TEXT(IMPORT_TEXT3(Robeco_2019_Assessment_SG,"19_SG_BAND",2019_USER_ENTRY_ID))
+***PE_Level=TEXT(IMPORT_TEXT3(Robeco_2019_Assessment_PE,"19_PE_BAND",2019_USER_ENTRY_ID))
 ***Overview_SG_A+=TEXT(
 IF((SG_Level="A+"),"A+", "{DELETE_ENTIRE_ROW}"))
 ***Overview_SG_A=TEXT(
@@ -186,154 +91,157 @@ IF((PE_Level="C"),"C", "{DELETE_ENTIRE_ROW}"))
 IF((PE_Level="D"),"D", "{DELETE_ENTIRE_ROW}"))
 ***Overview_PE_E=TEXT(
 IF((PE_Level="E"),"E", "{DELETE_ENTIRE_ROW}"))
+***SG1_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_SG,"SG_01_SCORE_TEXT",2019_USER_ENTRY_ID)
+***SG2_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_SG,"SG_02_SCORE_TEXT",2019_USER_ENTRY_ID)
+***SG5_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_SG,"SG_05_SCORE_TEXT",2019_USER_ENTRY_ID)
+***SG7_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_SG,"SG_07_SCORE_TEXT",2019_USER_ENTRY_ID)
+***SG9_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_SG,"SG_09_SCORE_TEXT",2019_USER_ENTRY_ID)
+***SG14_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_SG,"SG_14_SCORE_TEXT",2019_USER_ENTRY_ID)
+***CM1_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_SG,"CM_01_SCORE_TEXT",2019_USER_ENTRY_ID)
+***PE2_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_PE,"PE_02_SCORE_TEXT",2019_USER_ENTRY_ID)
+***PE3_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_PE,"PE_03_SCORE_TEXT",2019_USER_ENTRY_ID)
+***PE4_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_PE,"PE_04_SCORE_TEXT",2019_USER_ENTRY_ID)
+***PE6_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_PE,"PE_06_SCORE_TEXT",2019_USER_ENTRY_ID)
+***PE7_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_PE,"PE_07_SCORE_TEXT",2019_USER_ENTRY_ID)
+***PE8_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_PE,"PE_08_SCORE_TEXT",2019_USER_ENTRY_ID)
+***PE9_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_PE,"PE_09_SCORE_TEXT",2019_USER_ENTRY_ID)
+***PE10_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_PE,"PE_10_SCORE_TEXT",2019_USER_ENTRY_ID)
+***PE11_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_PE,"PE_11_SCORE_TEXT",2019_USER_ENTRY_ID)
+***PE12_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_PE,"PE_12_SCORE_TEXT",2019_USER_ENTRY_ID)
+***PE13_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_PE,"PE_13_SCORE_TEXT",2019_USER_ENTRY_ID)
+***PE15_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_PE,"PE_15_SCORE_TEXT",2019_USER_ENTRY_ID)
+***SG19_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_PE,"PE_SG_19_SCORE_TEXT",2019_USER_ENTRY_ID)
 ***SG1_Stars=TEXT(
 IF((SG_Level="NA"),"NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_01_SCORE)))=0, "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_01_SCORE)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_01_SCORE)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_01_SCORE)))=3, "3_Stars.jpg"))))))
+IF((SG1_SCORE_TEXT="0"),"0_Stars.jpg",
+IF((SG1_SCORE_TEXT="1"),"1_Star.jpg",
+IF((SG1_SCORE_TEXT="2"),"2_Stars.jpg",
+IF((SG1_SCORE_TEXT="3"),"3_Stars.jpg"))))))
 ***SG2_Stars=TEXT(
 IF((SG_Level="NA"),"NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_02_SCORE)))=0, "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_02_SCORE)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_02_SCORE)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_02_SCORE)))=3, "3_Stars.jpg"))))))
+IF((SG2_SCORE_TEXT=0), "0_Stars.jpg",
+IF((SG2_SCORE_TEXT="1"),"1_Star.jpg",
+IF((SG2_SCORE_TEXT="2"),"2_Stars.jpg",
+IF((SG2_SCORE_TEXT="3"),"3_Stars.jpg"))))))
 ***SG5_Stars=TEXT(
 IF((SG_Level="NA"),"NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_05_SCORE)))=0, "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_05_SCORE)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_05_SCORE)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_05_SCORE)))=3, "3_Stars.jpg"))))))
+IF((SG5_SCORE_TEXT="0"),"0_Stars.jpg",
+IF((SG5_SCORE_TEXT="1"),"1_Star.jpg",
+IF((SG5_SCORE_TEXT="2"),"2_Stars.jpg",
+IF((SG5_SCORE_TEXT="3"),"3_Stars.jpg"))))))
 ***SG7_Stars=TEXT(
 IF((SG_Level="NA"),"NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_07_SCORE)))=0, "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_07_SCORE)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_07_SCORE)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_07_SCORE)))=3, "3_Stars.jpg"))))))
+IF((SG7_SCORE_TEXT="0"),"0_Stars.jpg",
+IF((SG7_SCORE_TEXT="1"),"1_Star.jpg",
+IF((SG7_SCORE_TEXT="2"),"2_Stars.jpg",
+IF((SG7_SCORE_TEXT="3"),"3_Stars.jpg"))))))
 ***SG9_Stars=TEXT(
 IF((SG_Level="NA"),"NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_09_SCORE)))=0, "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_09_SCORE)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_09_SCORE)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_09_SCORE)))=3, "3_Stars.jpg"))))))
+IF((SG9_SCORE_TEXT="0"),"0_Stars.jpg",
+IF((SG9_SCORE_TEXT="1"),"1_Star.jpg",
+IF((SG9_SCORE_TEXT="2"),"2_Stars.jpg",
+IF((SG9_SCORE_TEXT="3"),"3_Stars.jpg"))))))
 ***SG14_Stars=TEXT(
 IF((SG_Level="NA"),"NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_14_SCORE)))=0, "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_14_SCORE)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_14_SCORE)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,SG_14_SCORE)))=3, "3_Stars.jpg"))))))
+IF((SG14_SCORE_TEXT="0"),"0_Stars.jpg",
+IF((SG14_SCORE_TEXT="1"),"1_Star.jpg",
+IF((SG14_SCORE_TEXT="2"),"2_Stars.jpg",
+IF((SG14_SCORE_TEXT="3"),"3_Stars.jpg"))))))
 ***CM1_Stars=TEXT(
 IF((SG_Level="NA"),"NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,CM_01_SCORE)))=0, "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,CM_01_SCORE)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,CM_01_SCORE)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,CM_01_SCORE)))=3, "3_Stars.jpg"))))))
-***SG_Total=TEXT(IMPORT_VALUE(Robeco_2018_Assessment_SG,TOTAL_SCORE))
-***RI_Policy_Section=VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,RI_Policy_Section))
-***Objectives_Section=VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,Objectives_Section))
-***Promoting_Section=VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,Promoting_Section))
-***Assurance_Section=VALUE(IMPORT_VALUE(Robeco_2018_Assessment_SG,Assurance_Section))
+IF((CM1_SCORE_TEXT="0"),"0_Stars.jpg",
+IF((CM1_SCORE_TEXT="1"),"1_Star.jpg",
+IF((CM1_SCORE_TEXT="2"),"2_Stars.jpg",
+IF((CM1_SCORE_TEXT="3"),"3_Stars.jpg"))))))
+***SG_Total=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_SG,"SG_TOTAL",2019_USER_ENTRY_ID))
+***RI_Policy_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_SG,"RI_Policy_Section",2019_USER_ENTRY_ID))
+***Objectives_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_SG,"Objectives_Section",2019_USER_ENTRY_ID))
+***HR_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_SG,"HR_Section",2019_USER_ENTRY_ID))
+***Promoting_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_SG,"Promoting_Section",2019_USER_ENTRY_ID))
+***Assurance_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_SG,"Assurance_Section",2019_USER_ENTRY_ID))
 ***PE2_Stars=TEXT(
-IF((PE_Level="NA")OR(PE_Level="NR"),"NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_02_SCORE)))=0, "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_02_SCORE)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_02_SCORE)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_02_SCORE)))=3, "3_Stars.jpg"))))))
+IF((PE_Level="NA")OR(PE_Level="NR")OR(PE2_SCORE_TEXT="NA"),"NA.jpg",
+IF((PE2_SCORE_TEXT="0"),"0_Stars.jpg",
+IF((PE2_SCORE_TEXT="1"),"1_Star.jpg",
+IF((PE2_SCORE_TEXT="2"),"2_Stars.jpg",
+IF((PE2_SCORE_TEXT="3"),"3_Stars.jpg"))))))
 ***PE3_Stars=TEXT(
-IF((PE_Level="NA")OR(PE_Level="NR"),"NA.jpg",
-IF((Signatory_Type="Asset Owner"), "NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_03_NA)))=100, "NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_03_SCORE)))=0, "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_03_SCORE)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_03_SCORE)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_03_SCORE)))=3, "3_Stars.jpg"))))))))
+IF((PE_Level="NA")OR(PE_Level="NR")OR(PE3_SCORE_TEXT="NA"),"NA.jpg",
+IF((PE3_SCORE_TEXT="0"),"0_Stars.jpg",
+IF((PE3_SCORE_TEXT="1"),"1_Star.jpg",
+IF((PE3_SCORE_TEXT="2"),"2_Stars.jpg",
+IF((PE3_SCORE_TEXT="3"),"3_Stars.jpg"))))))
 ***PE4_Stars=TEXT(
-IF((PE_Level="NA")OR(PE_Level="NR"),"NA.jpg",
-IF((Signatory_Type="Asset Owner"), "NA.jpg",
-IF((IMPORT_TEXT(Robeco_2018_Assessment_PE,PE_3_Clients))="We do not make formal commitments to responsible investment in fund formation contracts, LPAs or side letters because our clients do not request us to do so.",  "NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_04_SCORE)))=0, "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_04_SCORE)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_04_SCORE)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_04_SCORE)))=3, "3_Stars.jpg"))))))))
+IF((PE_Level="NA")OR(PE_Level="NR")OR(PE4_SCORE_TEXT="NA"),"NA.jpg",
+IF((PE4_SCORE_TEXT="0"),"0_Stars.jpg",
+IF((PE4_SCORE_TEXT="1"),"1_Star.jpg",
+IF((PE4_SCORE_TEXT="2"),"2_Stars.jpg",
+IF((PE4_SCORE_TEXT="3"),"3_Stars.jpg"))))))
 ***PE6_Stars=TEXT(
-IF((PE_Level="NA")OR(PE_Level="NR"),"NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_06_SCORE)))=0, "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_06_SCORE)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_06_SCORE)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_06_SCORE)))=3, "3_Stars.jpg"))))))
+IF((PE_Level="NA")OR(PE_Level="NR")OR(PE6_SCORE_TEXT="NA"),"NA.jpg",
+IF((PE6_SCORE_TEXT="0"),"0_Stars.jpg",
+IF((PE6_SCORE_TEXT="1"),"1_Star.jpg",
+IF((PE6_SCORE_TEXT="2"),"2_Stars.jpg",
+IF((PE6_SCORE_TEXT="3"),"3_Stars.jpg"))))))
 ***PE7_Stars=TEXT(
-IF((PE_Level="NA")OR(PE_Level="NR"),"NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_07_SCORE)))=0, "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_07_SCORE)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_07_SCORE)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_07_SCORE)))=3, "3_Stars.jpg"))))))
+IF((PE_Level="NA")OR(PE_Level="NR")OR(PE7_SCORE_TEXT="NA"),"NA.jpg",
+IF((PE7_SCORE_TEXT="0"),"0_Stars.jpg",
+IF((PE7_SCORE_TEXT="1"),"1_Star.jpg",
+IF((PE7_SCORE_TEXT="2"),"2_Stars.jpg",
+IF((PE7_SCORE_TEXT="3"),"3_Stars.jpg"))))))
 ***PE8_Stars=TEXT(
-IF((PE_Level="NA")OR(PE_Level="NR"),"NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_08_SCORE)))=0, "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_08_SCORE)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_08_SCORE)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_08_SCORE)))=3, "3_Stars.jpg"))))))
+IF((PE_Level="NA")OR(PE_Level="NR")OR(PE8_SCORE_TEXT="NA"),"NA.jpg",
+IF((PE8_SCORE_TEXT="0"),"0_Stars.jpg",
+IF((PE8_SCORE_TEXT="1"),"1_Star.jpg",
+IF((PE8_SCORE_TEXT="2"),"2_Stars.jpg",
+IF((PE8_SCORE_TEXT="3"),"3_Stars.jpg"))))))
 ***PE9_Stars=TEXT(
-IF((PE_Level="NA")OR(PE_Level="NR"),"NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_09_2_SCORE)))=0, "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_09_2_SCORE)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_09_2_SCORE)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_09_2_SCORE)))=3, "3_Stars.jpg"))))))
+IF((PE_Level="NA")OR(PE_Level="NR")OR(PE9_SCORE_TEXT="NA"),"NA.jpg",
+IF((PE9_SCORE_TEXT="0"),"0_Stars.jpg",
+IF((PE9_SCORE_TEXT="1"),"1_Star.jpg",
+IF((PE9_SCORE_TEXT="2"),"2_Stars.jpg",
+IF((PE9_SCORE_TEXT="3"),"3_Stars.jpg"))))))
 ***PE10_Stars=TEXT(
-IF((PE_Level="NA")OR(PE_Level="NR"),"NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_10_SCORE)))=0, "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_10_SCORE)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_10_SCORE)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_10_SCORE)))=3, "3_Stars.jpg"))))))
+IF((PE_Level="NA")OR(PE_Level="NR")OR(PE10_SCORE_TEXT="NA"),"NA.jpg",
+IF((PE10_SCORE_TEXT="0"),"0_Stars.jpg",
+IF((PE10_SCORE_TEXT="1"),"1_Star.jpg",
+IF((PE10_SCORE_TEXT="2"),"2_Stars.jpg",
+IF((PE10_SCORE_TEXT="3"),"3_Stars.jpg"))))))
 ***PE11_Stars=TEXT(
-IF((PE_Level="NA")OR(PE_Level="NR"),"NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_11_SCORE)))=0, "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_11_SCORE)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_11_SCORE)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_11_SCORE)))=3, "3_Stars.jpg"))))))
+IF((PE_Level="NA")OR(PE_Level="NR")OR(PE11_SCORE_TEXT="NA"),"NA.jpg",
+IF((PE11_SCORE_TEXT="0"),"0_Stars.jpg",
+IF((PE11_SCORE_TEXT="1"),"1_Star.jpg",
+IF((PE11_SCORE_TEXT="2"),"2_Stars.jpg",
+IF((PE11_SCORE_TEXT="3"),"3_Stars.jpg"))))))
 ***PE13_Stars=TEXT(
-IF((PE_Level="NA")OR(PE_Level="NR"),"NA.jpg",
-IF((IMPORT_TEXT(Robeco_2018_Assessment_PE,PE_13_NA_Txt))="N/A, we did not have any exits in the reporting year",  "NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_13_SCORE)))=0, "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_13_SCORE)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_13_SCORE)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_13_SCORE)))=3, "3_Stars.jpg")))))))
-***PE14_Stars=TEXT(
-IF((PE_Level="NA")OR(PE_Level="NR"),"NA.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_14_SCORE)))=0, "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_14_SCORE)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_14_SCORE)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_14_SCORE)))=3, "3_Stars.jpg"))))))
-***SG19a_Stars=TEXT(
-IF((PE_Level="NA")OR(PE_Level="NR"),"NA.jpg",
-IF((PE_Level="E")OR(VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_SG_19_SCORE))=0)OR(VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_SG_19_SCORE))=1), "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_SG_19_Public_subscore)))=3, "3_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_SG_19_Public_subscore)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_SG_19_Public_subscore)))=1, "1_Star.jpg"))))))
-***SG19b_Stars=TEXT(
-IF((PE_Level="NA")OR(PE_Level="NR"),"NA.jpg",
-IF((PE_Level="E")OR(VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_SG_19_SCORE))=0), "0_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_SG_19_Public_subscore)))=3, "3_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_SG_19_ClientOnly_subscore)))=3, "3_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_SG_19_Public_subscore)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_SG_19_ClientOnly_subscore)))=2, "2_Stars.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_SG_19_Public_subscore)))=1, "1_Star.jpg",
-IF((VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_SG_19_ClientOnly_subscore)))=1, "1_Star.jpg")))))))))
+IF((PE_Level="NA")OR(PE_Level="NR")OR(PE13_SCORE_TEXT="NA"),"NA.jpg",
+IF((PE13_SCORE_TEXT="0"),"0_Stars.jpg",
+IF((PE13_SCORE_TEXT="1"),"1_Star.jpg",
+IF((PE13_SCORE_TEXT="2"),"2_Stars.jpg",
+IF((PE13_SCORE_TEXT="3"),"3_Stars.jpg"))))))
+***SG19_Stars=TEXT(
+IF((PE_Level="NA")OR(PE_Level="NR")OR(SG19_SCORE_TEXT="NA"),"NA.jpg",
+IF((SG19_SCORE_TEXT="0"),"0_Stars.jpg",
+IF((SG19_SCORE_TEXT="3"),"3_Stars.jpg",
+IF((SG19_SCORE_TEXT="2"),"2_Stars.jpg",
+IF((SG19_SCORE_TEXT="1"),"1_Star.jpg"))))))
 ***PE_Total=TEXT(
 IF((PE_Level="NA")OR(PE_Level="NR"),"NA.jpg",
-IF((PE_Level="E"),"0", TEXT(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_Total))
+IF((PE_Level="E"),"0", VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_PE,"PE_Total",2019_USER_ENTRY_ID))
 ))))
 ***PE_Max=TEXT(
-IF((PE_Level="E"),"0", TEXT(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_Denom))
+IF((PE_Level="E"),"0", VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_PE,"PE_Denom",2019_USER_ENTRY_ID))
 )))
+
+/* Section score calculations */
 ***PE_Ind=TEXT(DIVIDE(PE_Max,3))
-***PE_Add_Text=TEXT(IFBLANK(IMPORT_TEXT(Robeco_2018_Assessment_PE,PE_Add_Txt),"No Additional Indicators"))
-***PE_Over_Section=VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_Over_Section))
-***PE_FR_Section=VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_FR_Section))
-***PE_Pre_Section=VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_Pre_Section))
-***PE_Post_Section=VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_Post_Section))
-***PE_Out_Section=VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_Out_Section))
-***PE_Com_Section=VALUE(IMPORT_VALUE(Robeco_2018_Assessment_PE,PE_Com_Section))
+***PE_Add_Text=TEXT(IFBLANK(IMPORT_TEXT3(Robeco_2019_Assessment_PE,"PE_AdditionalIndics_text",2019_USER_ENTRY_ID),"No Additional Indicators"))
+***PE_Over_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_PE,"PE_Over_Section",2019_USER_ENTRY_ID))
+***PE_FR_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_PE,"PE_FR_Section",2019_USER_ENTRY_ID))
+***PE_Pre_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_PE,"PE_Pre_Section",2019_USER_ENTRY_ID))
+***PE_Post_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_PE,"PE_Post_Section",2019_USER_ENTRY_ID))
+***PE_Out_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_PE,"PE_Out_Section",2019_USER_ENTRY_ID))
+***PE_Com_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_PE,"PE_Com_Section",2019_USER_ENTRY_ID))
 ***SG_Strat_E1=VALUE(
 IF((Main Strategy="Growth Capital"),0,
 IF((Main Strategy="Leveraged Buyout"),0,
@@ -554,6 +462,8 @@ IF((Combined_Band="C"),"C", "{DELETE_ENTIRE_ROW}"))
 IF((Combined_Band="D"),"D", "{DELETE_ENTIRE_ROW}"))
 ***Overview_Combined_E=TEXT(
 IF((Combined_Band="E"),"E", "{DELETE_ENTIRE_ROW}"))
+
+/* Value calculations */
 ***SG1_Value=VALUE(
 IF((SG1_Stars="0_Stars.jpg"),1,
 IF((SG1_Stars="1_Star.jpg"),2,
@@ -656,145 +566,114 @@ IF((PE13_Stars="1_Star.jpg"),2,
 IF((PE13_Stars="2_Stars.jpg"),3,
 IF((PE13_Stars="3_Stars.jpg"),4
 )))))
-***PE14_Value=VALUE(
-IF((PE14_Stars="0_Stars.jpg"),1,
-IF((PE14_Stars="1_Star.jpg"),2,
-IF((PE14_Stars="2_Stars.jpg"),3,
-IF((PE14_Stars="3_Stars.jpg"),4
-)))))
-***SG19a_Value=VALUE(
-IF((SG19a_Stars="0_Stars.jpg"),1,
-IF((SG19a_Stars="1_Star.jpg"),2,
-IF((SG19a_Stars="2_Stars.jpg"),3,
-IF((SG19a_Stars="3_Stars.jpg"),4
-)))))
-***SG19b_Value=VALUE(
-IF((SG19b_Stars="0_Stars.jpg"),1,
-IF((SG19b_Stars="1_Star.jpg"),2,
-IF((SG19b_Stars="2_Stars.jpg"),3,
-IF((SG19b_Stars="3_Stars.jpg"),4
-)))))
+
+/* Indicator change calculations */
 ***SG1_Change=TEXT(
-IFBLANK_ELSE(17_SG1_Stars,"Equal.jpg",IFBLANK_ELSE(SG1_Value,"Equal.jpg",
-IF((SG1_Value>17_SG1_Stars),"up.jpg",
-IF((SG1_Value<17_SG1_Stars),"down.jpg",
-IF((SG1_Value=17_SG1_Stars),"equal.jpg"
+IFBLANK_ELSE(18_SG1_Value,"Equal.jpg",IFBLANK_ELSE(SG1_Value,"Equal.jpg",
+IF((SG1_Value>18_SG1_Value),"up.jpg",
+IF((SG1_Value<18_SG1_Value),"down.jpg",
+IF((SG1_Value=18_SG1_Value),"equal.jpg"
 ))))))
 ***SG2_Change=TEXT(
-IFBLANK_ELSE(17_SG2_Stars,"Equal.jpg",IFBLANK_ELSE(SG2_Value,"Equal.jpg",
-IF((SG2_Value>17_SG2_Stars),"up.jpg",
-IF((SG2_Value<17_SG2_Stars),"down.jpg",
-IF((SG2_Value=17_SG2_Stars),"equal.jpg"
+IFBLANK_ELSE(18_SG2_Value,"Equal.jpg",IFBLANK_ELSE(SG2_Value,"Equal.jpg",
+IF((SG2_Value>18_SG2_Value),"up.jpg",
+IF((SG2_Value<18_SG2_Value),"down.jpg",
+IF((SG2_Value=18_SG2_Value),"equal.jpg"
 ))))))
 ***SG5_Change=TEXT(
-IFBLANK_ELSE(17_SG5_Stars,"Equal.jpg",IFBLANK_ELSE(SG5_Value,"Equal.jpg",
-IF((SG5_Value>17_SG5_Stars),"up.jpg",
-IF((SG5_Value<17_SG5_Stars),"down.jpg",
-IF((SG5_Value=17_SG5_Stars),"equal.jpg"
+IFBLANK_ELSE(18_SG5_Value,"Equal.jpg",IFBLANK_ELSE(SG5_Value,"Equal.jpg",
+IF((SG5_Value>18_SG5_Value),"up.jpg",
+IF((SG5_Value<18_SG5_Value),"down.jpg",
+IF((SG5_Value=18_SG5_Value),"equal.jpg"
 ))))))
 ***SG7_Change=TEXT(
-IFBLANK_ELSE(17_SG7_Stars,"Equal.jpg",IFBLANK_ELSE(SG7_Value,"Equal.jpg",
-IF((SG7_Value>17_SG7_Stars),"up.jpg",
-IF((SG7_Value<17_SG7_Stars),"down.jpg",
-IF((SG7_Value=17_SG7_Stars),"equal.jpg"
+IFBLANK_ELSE(18_SG7_Value,"Equal.jpg",IFBLANK_ELSE(SG7_Value,"Equal.jpg",
+IF((SG7_Value>18_SG7_Value),"up.jpg",
+IF((SG7_Value<18_SG7_Value),"down.jpg",
+IF((SG7_Value=18_SG7_Value),"equal.jpg"
 ))))))
 ***SG9_Change=TEXT(
-IFBLANK_ELSE(17_SG9_Stars,"Equal.jpg",IFBLANK_ELSE(SG9_Value,"Equal.jpg",
-IF((SG9_Value>17_SG9_Stars),"up.jpg",
-IF((SG9_Value<17_SG9_Stars),"down.jpg",
-IF((SG9_Value=17_SG9_Stars),"equal.jpg"
+IFBLANK_ELSE(18_SG9_Value,"Equal.jpg",IFBLANK_ELSE(SG9_Value,"Equal.jpg",
+IF((SG9_Value>18_SG9_Value),"up.jpg",
+IF((SG9_Value<18_SG9_Value),"down.jpg",
+IF((SG9_Value=18_SG9_Value),"equal.jpg"
 ))))))
 ***SG14_Change=TEXT(
-IFBLANK_ELSE(17_SG13_Stars,"Equal.jpg",IFBLANK_ELSE(SG14_Value,"Equal.jpg",
-IF((SG14_Value>17_SG13_Stars),"up.jpg",
-IF((SG14_Value<17_SG13_Stars),"down.jpg",
-IF((SG14_Value=17_SG13_Stars),"equal.jpg"
+IFBLANK_ELSE(18_SG14_Value,"Equal.jpg",IFBLANK_ELSE(SG14_Value,"Equal.jpg",
+IF((SG14_Value>18_SG14_Value),"up.jpg",
+IF((SG14_Value<18_SG14_Value),"down.jpg",
+IF((SG14_Value=18_SG14_Value),"equal.jpg"
 ))))))
 ***CM01_Change=TEXT(
-IFBLANK_ELSE(17_CM01_Stars,"Equal.jpg",IFBLANK_ELSE(CM_01_Value,"Equal.jpg",
-IF((CM_01_Value>17_CM01_Stars),"up.jpg",
-IF((CM_01_Value<17_CM01_Stars),"down.jpg",
-IF((CM_01_Value=17_CM01_Stars),"equal.jpg"
+IFBLANK_ELSE(18_CM01_Value,"Equal.jpg",IFBLANK_ELSE(CM_01_Value,"Equal.jpg",
+IF((CM_01_Value>18_CM01_Value),"up.jpg",
+IF((CM_01_Value<18_CM01_Value),"down.jpg",
+IF((CM_01_Value=18_CM01_Value),"equal.jpg"
 ))))))
 ***PE02_Change=TEXT(
-IFBLANK_ELSE(17_PE4_Stars,"Equal.jpg",IFBLANK_ELSE(PE2_Value,"Equal.jpg",
-IF((PE2_Value>17_PE4_Stars),"up.jpg",
-IF((PE2_Value<17_PE4_Stars),"down.jpg",
-IF((PE2_Value=17_PE4_Stars),"equal.jpg"
+IFBLANK_ELSE(18_PE2_Value,"Equal.jpg",IFBLANK_ELSE(PE2_Value,"Equal.jpg",
+IF((PE2_Value>18_PE2_Value),"up.jpg",
+IF((PE2_Value<18_PE2_Value),"down.jpg",
+IF((PE2_Value=18_PE2_Value),"equal.jpg"
 ))))))
 ***PE03_Change=TEXT(
-IFBLANK_ELSE(17_PE5_Stars,"Equal.jpg",IFBLANK_ELSE(PE3_Value,"Equal.jpg",
-IF((PE3_Value>17_PE5_Stars),"up.jpg",
-IF((PE3_Value<17_PE5_Stars),"down.jpg",
-IF((PE3_Value=17_PE5_Stars),"equal.jpg"
+IFBLANK_ELSE(18_PE3_Value,"Equal.jpg",IFBLANK_ELSE(PE3_Value,"Equal.jpg",
+IF((PE3_Value>18_PE3_Value),"up.jpg",
+IF((PE3_Value<18_PE3_Value),"down.jpg",
+IF((PE3_Value=18_PE3_Value),"equal.jpg"
 ))))))
 ***PE04_Change=TEXT(
-IFBLANK_ELSE(17_PE6_Stars,"Equal.jpg",IFBLANK_ELSE(PE4_Value,"Equal.jpg",
-IF((PE4_Value>17_PE6_Stars),"up.jpg",
-IF((PE4_Value<17_PE6_Stars),"down.jpg",
-IF((PE4_Value=17_PE6_Stars),"equal.jpg"
+IFBLANK_ELSE(18_PE4_Value,"Equal.jpg",IFBLANK_ELSE(PE4_Value,"Equal.jpg",
+IF((PE4_Value>18_PE4_Value),"up.jpg",
+IF((PE4_Value<18_PE4_Value),"down.jpg",
+IF((PE4_Value=18_PE4_Value),"equal.jpg"
 ))))))
 ***PE06_Change=TEXT(
-IFBLANK_ELSE(17_PE8_Stars,"Equal.jpg",IFBLANK_ELSE(PE6_Value,"Equal.jpg",
-IF((PE6_Value>17_PE8_Stars),"up.jpg",
-IF((PE6_Value<17_PE8_Stars),"down.jpg",
-IF((PE6_Value=17_PE8_Stars),"equal.jpg"
+IFBLANK_ELSE(18_PE6_Value,"Equal.jpg",IFBLANK_ELSE(PE6_Value,"Equal.jpg",
+IF((PE6_Value>18_PE6_Value),"up.jpg",
+IF((PE6_Value<18_PE6_Value),"down.jpg",
+IF((PE6_Value=18_PE6_Value),"equal.jpg"
 ))))))
 ***PE07_Change=TEXT(
-IFBLANK_ELSE(17_PE9_Stars,"Equal.jpg",IFBLANK_ELSE(PE7_Value,"Equal.jpg",
-IF((PE7_Value>17_PE9_Stars),"up.jpg",
-IF((PE7_Value<17_PE9_Stars),"down.jpg",
-IF((PE7_Value=17_PE9_Stars),"equal.jpg"
+IFBLANK_ELSE(18_PE7_Value,"Equal.jpg",IFBLANK_ELSE(PE7_Value,"Equal.jpg",
+IF((PE7_Value>18_PE7_Value),"up.jpg",
+IF((PE7_Value<18_PE7_Value),"down.jpg",
+IF((PE7_Value=18_PE7_Value),"equal.jpg"
 ))))))
 ***PE08_Change=TEXT(
-IFBLANK_ELSE(17_PE10_Stars,"Equal.jpg",IFBLANK_ELSE(PE8_Value,"Equal.jpg",
-IF((PE8_Value>17_PE10_Stars),"up.jpg",
-IF((PE8_Value<17_PE10_Stars),"down.jpg",
-IF((PE8_Value=17_PE10_Stars),"equal.jpg"
+IFBLANK_ELSE(18_PE8_Value,"Equal.jpg",IFBLANK_ELSE(PE8_Value,"Equal.jpg",
+IF((PE8_Value>18_PE8_Value),"up.jpg",
+IF((PE8_Value<18_PE8_Value),"down.jpg",
+IF((PE8_Value=18_PE8_Value),"equal.jpg"
 ))))))
 ***PE09_Change=TEXT(
-IFBLANK_ELSE(17_PE11_Stars,"Equal.jpg",IFBLANK_ELSE(PE9_Value,"Equal.jpg",
-IF((PE9_Value>17_PE11_Stars),"up.jpg",
-IF((PE9_Value<17_PE11_Stars),"down.jpg",
-IF((PE9_Value=17_PE11_Stars),"equal.jpg"
+IFBLANK_ELSE(18_PE9_Value,"Equal.jpg",IFBLANK_ELSE(PE9_Value,"Equal.jpg",
+IF((PE9_Value>18_PE9_Value),"up.jpg",
+IF((PE9_Value<18_PE9_Value),"down.jpg",
+IF((PE9_Value=18_PE9_Value),"equal.jpg"
 ))))))
 ***PE10_Change=TEXT(
-IFBLANK_ELSE(17_PE12_Stars,"Equal.jpg",IFBLANK_ELSE(PE10_Value,"Equal.jpg",
-IF((PE10_Value>17_PE12_Stars),"up.jpg",
-IF((PE10_Value<17_PE12_Stars),"down.jpg",
-IF((PE10_Value=17_PE12_Stars),"equal.jpg"
+IFBLANK_ELSE(18_PE10_Value,"Equal.jpg",IFBLANK_ELSE(PE10_Value,"Equal.jpg",
+IF((PE10_Value>18_PE10_Value),"up.jpg",
+IF((PE10_Value<18_PE10_Value),"down.jpg",
+IF((PE10_Value=18_PE10_Value),"equal.jpg"
 ))))))
 ***PE11_Change=TEXT(
-IFBLANK_ELSE(17_PE13_Stars,"Equal.jpg",IFBLANK_ELSE(PE11_Value,"Equal.jpg",
-IF((PE11_Value>17_PE13_Stars),"up.jpg",
-IF((PE11_Value<17_PE13_Stars),"down.jpg",
-IF((PE11_Value=17_PE13_Stars),"equal.jpg"
+IFBLANK_ELSE(18_PE11_Value,"Equal.jpg",IFBLANK_ELSE(PE11_Value,"Equal.jpg",
+IF((PE11_Value>18_PE11_Value),"up.jpg",
+IF((PE11_Value<18_PE11_Value),"down.jpg",
+IF((PE11_Value=18_PE11_Value),"equal.jpg"
 ))))))
+***PE12_Change=TEXT("equal.jpg")
 ***PE13_Change=TEXT(
-IFBLANK_ELSE(17_PE15_Stars,"Equal.jpg",IFBLANK_ELSE(PE13_Value,"Equal.jpg",
-IF((PE13_Value>17_PE15_Stars),"up.jpg",
-IF((PE13_Value<17_PE15_Stars),"down.jpg",
-IF((PE13_Value=17_PE15_Stars),"equal.jpg"
+IFBLANK_ELSE(18_PE13_Value,"Equal.jpg",IFBLANK_ELSE(PE13_Value,"Equal.jpg",
+IF((PE13_Value>18_PE13_Value),"up.jpg",
+IF((PE13_Value<18_PE13_Value),"down.jpg",
+IF((PE13_Value=18_PE13_Value),"equal.jpg"
 ))))))
-***PE14_Change=TEXT(
-IFBLANK_ELSE(17_PE16_Stars,"Equal.jpg",IFBLANK_ELSE(PE14_Value,"Equal.jpg",
-IF((PE14_Value>17_PE16_Stars),"up.jpg",
-IF((PE14_Value<17_PE16_Stars),"down.jpg",
-IF((PE14_Value=17_PE16_Stars),"equal.jpg"
-))))))
-***SG19a_Change=TEXT(
-IFBLANK_ELSE(17_PE18a_Stars,"Equal.jpg",IFBLANK_ELSE(SG19a_Value,"Equal.jpg",
-IF((SG19a_Value>17_PE18a_Stars),"up.jpg",
-IF((SG19a_Value<17_PE18a_Stars),"down.jpg",
-IF((SG19a_Value=17_PE18a_Stars),"equal.jpg"
-))))))
-***SG19b_Change=TEXT(
-IFBLANK_ELSE(17_PE18b_Stars,"Equal.jpg",IFBLANK_ELSE(SG19b_Value,"Equal.jpg",
-IF((SG19b_Value>17_PE18b_Stars),"up.jpg",
-IF((SG19b_Value<17_PE18b_Stars),"down.jpg",
-IF((SG19b_Value=17_PE18b_Stars),"equal.jpg"
-))))))
-***SG_18_Value=VALUE(
+***PE15_Change=TEXT("equal.jpg")
+***SG19_Change=TEXT("equal.jpg")
+***SG_19_Value=VALUE(
 IF((SG_Level="A+"),6,
 IF((SG_Level="A"),5,
 IF((SG_Level="B"),4,
@@ -802,21 +681,23 @@ IF((SG_Level="C"),3,
 IF((SG_Level="D"),2,
 IF((SG_Level="E"),1
 ))))))))
-***SG_17_Value=VALUE(
-IF((17_SG_Level="A+"),6,
-IF((17_SG_Level="A"),5,
-IF((17_SG_Level="B"),4,
-IF((17_SG_Level="C"),3,
-IF((17_SG_Level="D"),2,
-IF((17_SG_Level="E"),1
+***SG_18_Value=VALUE(
+IF((18_SG_Level="A+"),6,
+IF((18_SG_Level="A"),5,
+IF((18_SG_Level="B"),4,
+IF((18_SG_Level="C"),3,
+IF((18_SG_Level="D"),2,
+IF((18_SG_Level="E"),1
 ))))))))
+
+/* Band change calculations */
 ***SG_Change=TEXT(
-IF((17_SG_Level="NA")OR(17_SG_Level="NR")OR(SG_Level="NA")OR(SG_Level="NR"),"equal.jpg",
-IF((SG_18_Value>SG_17_Value),"up.jpg",
-IF((SG_18_Value<SG_17_Value),"down.jpg",
-IF((SG_18_Value=SG_17_Value),"equal.jpg","equal.jpg"
+IF((18_SG_Level="NA")OR(18_SG_Level="NR")OR(SG_Level="NA")OR(SG_Level="NR"),"equal.jpg",
+IF((SG_19_Value>SG_18_Value),"up.jpg",
+IF((SG_19_Value<SG_18_Value),"down.jpg",
+IF((SG_19_Value=SG_18_Value),"equal.jpg","equal.jpg"
 )))))
-***PE_18_Value=VALUE(
+***PE_19_Value=VALUE(
 IF((PE_Level="A+"),6,
 IF((PE_Level="A"),5,
 IF((PE_Level="B"),4,
@@ -824,145 +705,147 @@ IF((PE_Level="C"),3,
 IF((PE_Level="D"),2,
 IF((PE_Level="E"),1
 ))))))))
-***PE_17_Value=VALUE(
-IF((17_PE_Level="A+"),6,
-IF((17_PE_Level="A"),5,
-IF((17_PE_Level="B"),4,
-IF((17_PE_Level="C"),3,
-IF((17_PE_Level="D"),2,
-IF((17_PE_Level="E"),1
+***PE_18_Value=VALUE(
+IF((18_PE_Level="A+"),6,
+IF((18_PE_Level="A"),5,
+IF((18_PE_Level="B"),4,
+IF((18_PE_Level="C"),3,
+IF((18_PE_Level="D"),2,
+IF((18_PE_Level="E"),1
 ))))))))
 ***PE_Change=TEXT(
-IF((17_PE_Level="NA")OR(17_PE_Level="NR")OR(PE_Level="NA")OR(PE_Level="NR"),"equal.jpg",
-IF((PE_18_Value>PE_17_Value),"up.jpg",
-IF((PE_18_Value<PE_17_Value),"down.jpg",
-IF((PE_18_Value=PE_17_Value),"equal.jpg","equal.jpg"
+IF((18_PE_Level="NA")OR(18_PE_Level="NR")OR(PE_Level="NA")OR(PE_Level="NR"),"equal.jpg",
+IF((PE_19_Value>PE_18_Value),"up.jpg",
+IF((PE_19_Value<PE_18_Value),"down.jpg",
+IF((PE_19_Value=PE_18_Value),"equal.jpg","equal.jpg"
 )))))
 ***SG_MEDIAN=TEXT("B")
 ***PE_MEDIAN=TEXT("A")
 ***COMBINED_SCORE_MEDIAN=TEXT("B")
 ***TOTAL_RESPONDENTS=TEXT("63")
 ***TOTAL_RESPONDENTS2=TEXT("303")
+
+/* Regional calculations */
 ***SG_Region_E=VALUE(
-IF((RegionRobeco="Europe"),0,
-IF((RegionRobeco="North America"),0,
-IF((RegionRobeco="EM (includes BRIC)"),0,
-IF((RegionRobeco="Asia-Pacific"),0,0
+IF((Region="Europe"),0,
+IF((Region="North America"),0,
+IF((Region="EM (includes BRIC)"),0,
+IF((Region="Asia-Pacific"),0,0
 )))))
 ***SG_Region_D=VALUE(
-IF((RegionRobeco="Europe"),0,
-IF((RegionRobeco="North America"),4,
-IF((RegionRobeco="EM (includes BRIC)"),0,
-IF((RegionRobeco="Asia-Pacific"),0,0
+IF((Region="Europe"),0,
+IF((Region="North America"),4,
+IF((Region="EM (includes BRIC)"),0,
+IF((Region="Asia-Pacific"),0,0
 )))))
 ***SG_Region_C=VALUE(
-IF((RegionRobeco="Europe"),19,
-IF((RegionRobeco="North America"),24,
-IF((RegionRobeco="EM (includes BRIC)"),22,
-IF((RegionRobeco="Asia-Pacific"),0,0
+IF((Region="Europe"),19,
+IF((Region="North America"),24,
+IF((Region="EM (includes BRIC)"),22,
+IF((Region="Asia-Pacific"),0,0
 )))))
 ***SG_Region_B=VALUE(
-IF((RegionRobeco="Europe"),37,
-IF((RegionRobeco="North America"),48,
-IF((RegionRobeco="EM (includes BRIC)"),67,
-IF((RegionRobeco="Asia-Pacific"),100,0
+IF((Region="Europe"),37,
+IF((Region="North America"),48,
+IF((Region="EM (includes BRIC)"),67,
+IF((Region="Asia-Pacific"),100,0
 )))))
 ***SG_Region_A=VALUE(
-IF((RegionRobeco="Europe"),22,
-IF((RegionRobeco="North America"),16,
-IF((RegionRobeco="EM (includes BRIC)"),11,
-IF((RegionRobeco="Asia-Pacific"),0,0
+IF((Region="Europe"),22,
+IF((Region="North America"),16,
+IF((Region="EM (includes BRIC)"),11,
+IF((Region="Asia-Pacific"),0,0
 )))))
 ***SG_Region_AA=VALUE(
-IF((RegionRobeco="Europe"),22,
-IF((RegionRobeco="North America"),8,
-IF((RegionRobeco="EM (includes BRIC)"),0,
-IF((RegionRobeco="Asia-Pacific"),0,0
+IF((Region="Europe"),22,
+IF((Region="North America"),8,
+IF((Region="EM (includes BRIC)"),0,
+IF((Region="Asia-Pacific"),0,0
 )))))
 ***PE_Region_E=VALUE(
-IF((RegionRobeco="Europe"),0,
-IF((RegionRobeco="North America"),0,
-IF((RegionRobeco="EM (includes BRIC)"),0,
-IF((RegionRobeco="Asia-Pacific"),0,0
+IF((Region="Europe"),0,
+IF((Region="North America"),0,
+IF((Region="EM (includes BRIC)"),0,
+IF((Region="Asia-Pacific"),0,0
 )))))
 ***PE_Region_D=VALUE(
-IF((RegionRobeco="Europe"),0,
-IF((RegionRobeco="North America"),4,
-IF((RegionRobeco="EM (includes BRIC)"),0,
-IF((RegionRobeco="Asia-Pacific"),0,0
+IF((Region="Europe"),0,
+IF((Region="North America"),4,
+IF((Region="EM (includes BRIC)"),0,
+IF((Region="Asia-Pacific"),0,0
 )))))
 ***PE_Region_C=VALUE(
-IF((RegionRobeco="Europe"),7,
-IF((RegionRobeco="North America"),20,
-IF((RegionRobeco="EM (includes BRIC)"),33,
-IF((RegionRobeco="Asia-Pacific"),0,0
+IF((Region="Europe"),7,
+IF((Region="North America"),20,
+IF((Region="EM (includes BRIC)"),33,
+IF((Region="Asia-Pacific"),0,0
 )))))
 ***PE_Region_B=VALUE(
-IF((RegionRobeco="Europe"),19,
-IF((RegionRobeco="North America"),40,
-IF((RegionRobeco="EM (includes BRIC)"),22,
-IF((RegionRobeco="Asia-Pacific"),50,0
+IF((Region="Europe"),19,
+IF((Region="North America"),40,
+IF((Region="EM (includes BRIC)"),22,
+IF((Region="Asia-Pacific"),50,0
 )))))
 ***PE_Region_A=VALUE(
-IF((RegionRobeco="Europe"),56,
-IF((RegionRobeco="North America"),32,
-IF((RegionRobeco="EM (includes BRIC)"),44,
-IF((RegionRobeco="Asia-Pacific"),50,0
+IF((Region="Europe"),56,
+IF((Region="North America"),32,
+IF((Region="EM (includes BRIC)"),44,
+IF((Region="Asia-Pacific"),50,0
 )))))
 ***PE_Region_AA=VALUE(
-IF((RegionRobeco="Europe"),19,
-IF((RegionRobeco="North America"),4,
-IF((RegionRobeco="EM (includes BRIC)"),0,
-IF((RegionRobeco="Asia-Pacific"),0,0
+IF((Region="Europe"),19,
+IF((Region="North America"),4,
+IF((Region="EM (includes BRIC)"),0,
+IF((Region="Asia-Pacific"),0,0
 )))))
-***PE_COUNT_E_Europe=SUM(IF((PE_Level="E")AND(RegionRobeco="Europe"),1,0,))
-***PE_COUNT_D_Europe=SUM(IF((PE_Level="D")AND(RegionRobeco="Europe"),1,0,))
-***PE_COUNT_C_Europe=SUM(IF((PE_Level="C")AND(RegionRobeco="Europe"),1,0,))
-***PE_COUNT_B_Europe=SUM(IF((PE_Level="B")AND(RegionRobeco="Europe"),1,0,))
-***PE_COUNT_A_Europe=SUM(IF((PE_Level="A")AND(RegionRobeco="Europe"),1,0,))
-***PE_COUNT_AA_Europe=SUM(IF((PE_Level="A+")AND(RegionRobeco="Europe"),1,0,))
-***PE_COUNT_E_NorthAmerica=SUM(IF((PE_Level="E")AND(RegionRobeco="North America"),1,0,))
-***PE_COUNT_D_NorthAmerica=SUM(IF((PE_Level="D")AND(RegionRobeco="North America"),1,0,))
-***PE_COUNT_C_NorthAmerica=SUM(IF((PE_Level="C")AND(RegionRobeco="North America"),1,0,))
-***PE_COUNT_B_NorthAmerica=SUM(IF((PE_Level="B")AND(RegionRobeco="North America"),1,0,))
-***PE_COUNT_A_NorthAmerica=SUM(IF((PE_Level="A")AND(RegionRobeco="North America"),1,0,))
-***PE_COUNT_AA_NorthAmerica=SUM(IF((PE_Level="A+")AND(RegionRobeco="North America"),1,0,))
-***PE_COUNT_E_EM=SUM(IF((PE_Level="E")AND(RegionRobeco="EM (includes BRIC)"),1,0,))
-***PE_COUNT_D_EM=SUM(IF((PE_Level="D")AND(RegionRobeco="EM (includes BRIC)"),1,0,))
-***PE_COUNT_C_EM=SUM(IF((PE_Level="C")AND(RegionRobeco="EM (includes BRIC)"),1,0,))
-***PE_COUNT_B_EM=SUM(IF((PE_Level="B")AND(RegionRobeco="EM (includes BRIC)"),1,0,))
-***PE_COUNT_A_EM=SUM(IF((PE_Level="A")AND(RegionRobeco="EM (includes BRIC)"),1,0,))
-***PE_COUNT_AA_EM=SUM(IF((PE_Level="A+")AND(RegionRobeco="EM (includes BRIC)"),1,0,))
-***PE_COUNT_E_AsiaPacific=SUM(IF((PE_Level="E")AND(RegionRobeco="Asia-Pacific"),1,0,))
-***PE_COUNT_D_AsiaPacific=SUM(IF((PE_Level="D")AND(RegionRobeco="Asia-Pacific"),1,0,))
-***PE_COUNT_C_AsiaPacific=SUM(IF((PE_Level="C")AND(RegionRobeco="Asia-Pacific"),1,0,))
-***PE_COUNT_B_AsiaPacific=SUM(IF((PE_Level="B")AND(RegionRobeco="Asia-Pacific"),1,0,))
-***PE_COUNT_A_AsiaPacific=SUM(IF((PE_Level="A")AND(RegionRobeco="Asia-Pacific"),1,0,))
-***PE_COUNT_AA_AsiaPacific=SUM(IF((PE_Level="A+")AND(RegionRobeco="Asia-Pacific"),1,0,))
-***SG_COUNT_E_Europe=SUM(IF((SG_Level="E")AND(RegionRobeco="Europe"),1,0,))
-***SG_COUNT_D_Europe=SUM(IF((SG_Level="D")AND(RegionRobeco="Europe"),1,0,))
-***SG_COUNT_C_Europe=SUM(IF((SG_Level="C")AND(RegionRobeco="Europe"),1,0,))
-***SG_COUNT_B_Europe=SUM(IF((SG_Level="B")AND(RegionRobeco="Europe"),1,0,))
-***SG_COUNT_A_Europe=SUM(IF((SG_Level="A")AND(RegionRobeco="Europe"),1,0,))
-***SG_COUNT_AA_Europe=SUM(IF((SG_Level="A+")AND(RegionRobeco="Europe"),1,0,))
-***SG_COUNT_E_NorthAmerica=SUM(IF((SG_Level="E")AND(RegionRobeco="North America"),1,0,))
-***SG_COUNT_D_NorthAmerica=SUM(IF((SG_Level="D")AND(RegionRobeco="North America"),1,0,))
-***SG_COUNT_C_NorthAmerica=SUM(IF((SG_Level="C")AND(RegionRobeco="North America"),1,0,))
-***SG_COUNT_B_NorthAmerica=SUM(IF((SG_Level="B")AND(RegionRobeco="North America"),1,0,))
-***SG_COUNT_A_NorthAmerica=SUM(IF((SG_Level="A")AND(RegionRobeco="North America"),1,0,))
-***SG_COUNT_AA_NorthAmerica=SUM(IF((SG_Level="A+")AND(RegionRobeco="North America"),1,0,))
-***SG_COUNT_E_EM=SUM(IF((SG_Level="E")AND(RegionRobeco="EM (includes BRIC)"),1,0,))
-***SG_COUNT_D_EM=SUM(IF((SG_Level="D")AND(RegionRobeco="EM (includes BRIC)"),1,0,))
-***SG_COUNT_C_EM=SUM(IF((SG_Level="C")AND(RegionRobeco="EM (includes BRIC)"),1,0,))
-***SG_COUNT_B_EM=SUM(IF((SG_Level="B")AND(RegionRobeco="EM (includes BRIC)"),1,0,))
-***SG_COUNT_A_EM=SUM(IF((SG_Level="A")AND(RegionRobeco="EM (includes BRIC)"),1,0,))
-***SG_COUNT_AA_EM=SUM(IF((SG_Level="A+")AND(RegionRobeco="EM (includes BRIC)"),1,0,))
-***SG_COUNT_E_AsiaPacific=SUM(IF((SG_Level="E")AND(RegionRobeco="Asia-Pacific"),1,0,))
-***SG_COUNT_D_AsiaPacific=SUM(IF((SG_Level="D")AND(RegionRobeco="Asia-Pacific"),1,0,))
-***SG_COUNT_C_AsiaPacific=SUM(IF((SG_Level="C")AND(RegionRobeco="Asia-Pacific"),1,0,))
-***SG_COUNT_B_AsiaPacific=SUM(IF((SG_Level="B")AND(RegionRobeco="Asia-Pacific"),1,0,))
-***SG_COUNT_A_AsiaPacific=SUM(IF((SG_Level="A")AND(RegionRobeco="Asia-Pacific"),1,0,))
-***SG_COUNT_AA_AsiaPacific=SUM(IF((SG_Level="A+")AND(RegionRobeco="Asia-Pacific"),1,0,))
+***PE_COUNT_E_Europe=SUM(IF((PE_Level="E")AND(Region="Europe"),1,0,))
+***PE_COUNT_D_Europe=SUM(IF((PE_Level="D")AND(Region="Europe"),1,0,))
+***PE_COUNT_C_Europe=SUM(IF((PE_Level="C")AND(Region="Europe"),1,0,))
+***PE_COUNT_B_Europe=SUM(IF((PE_Level="B")AND(Region="Europe"),1,0,))
+***PE_COUNT_A_Europe=SUM(IF((PE_Level="A")AND(Region="Europe"),1,0,))
+***PE_COUNT_AA_Europe=SUM(IF((PE_Level="A+")AND(Region="Europe"),1,0,))
+***PE_COUNT_E_NorthAmerica=SUM(IF((PE_Level="E")AND(Region="North America"),1,0,))
+***PE_COUNT_D_NorthAmerica=SUM(IF((PE_Level="D")AND(Region="North America"),1,0,))
+***PE_COUNT_C_NorthAmerica=SUM(IF((PE_Level="C")AND(Region="North America"),1,0,))
+***PE_COUNT_B_NorthAmerica=SUM(IF((PE_Level="B")AND(Region="North America"),1,0,))
+***PE_COUNT_A_NorthAmerica=SUM(IF((PE_Level="A")AND(Region="North America"),1,0,))
+***PE_COUNT_AA_NorthAmerica=SUM(IF((PE_Level="A+")AND(Region="North America"),1,0,))
+***PE_COUNT_E_EM=SUM(IF((PE_Level="E")AND(Region="EM (includes BRIC)"),1,0,))
+***PE_COUNT_D_EM=SUM(IF((PE_Level="D")AND(Region="EM (includes BRIC)"),1,0,))
+***PE_COUNT_C_EM=SUM(IF((PE_Level="C")AND(Region="EM (includes BRIC)"),1,0,))
+***PE_COUNT_B_EM=SUM(IF((PE_Level="B")AND(Region="EM (includes BRIC)"),1,0,))
+***PE_COUNT_A_EM=SUM(IF((PE_Level="A")AND(Region="EM (includes BRIC)"),1,0,))
+***PE_COUNT_AA_EM=SUM(IF((PE_Level="A+")AND(Region="EM (includes BRIC)"),1,0,))
+***PE_COUNT_E_AsiaPacific=SUM(IF((PE_Level="E")AND(Region="Asia-Pacific"),1,0,))
+***PE_COUNT_D_AsiaPacific=SUM(IF((PE_Level="D")AND(Region="Asia-Pacific"),1,0,))
+***PE_COUNT_C_AsiaPacific=SUM(IF((PE_Level="C")AND(Region="Asia-Pacific"),1,0,))
+***PE_COUNT_B_AsiaPacific=SUM(IF((PE_Level="B")AND(Region="Asia-Pacific"),1,0,))
+***PE_COUNT_A_AsiaPacific=SUM(IF((PE_Level="A")AND(Region="Asia-Pacific"),1,0,))
+***PE_COUNT_AA_AsiaPacific=SUM(IF((PE_Level="A+")AND(Region="Asia-Pacific"),1,0,))
+***SG_COUNT_E_Europe=SUM(IF((SG_Level="E")AND(Region="Europe"),1,0,))
+***SG_COUNT_D_Europe=SUM(IF((SG_Level="D")AND(Region="Europe"),1,0,))
+***SG_COUNT_C_Europe=SUM(IF((SG_Level="C")AND(Region="Europe"),1,0,))
+***SG_COUNT_B_Europe=SUM(IF((SG_Level="B")AND(Region="Europe"),1,0,))
+***SG_COUNT_A_Europe=SUM(IF((SG_Level="A")AND(Region="Europe"),1,0,))
+***SG_COUNT_AA_Europe=SUM(IF((SG_Level="A+")AND(Region="Europe"),1,0,))
+***SG_COUNT_E_NorthAmerica=SUM(IF((SG_Level="E")AND(Region="North America"),1,0,))
+***SG_COUNT_D_NorthAmerica=SUM(IF((SG_Level="D")AND(Region="North America"),1,0,))
+***SG_COUNT_C_NorthAmerica=SUM(IF((SG_Level="C")AND(Region="North America"),1,0,))
+***SG_COUNT_B_NorthAmerica=SUM(IF((SG_Level="B")AND(Region="North America"),1,0,))
+***SG_COUNT_A_NorthAmerica=SUM(IF((SG_Level="A")AND(Region="North America"),1,0,))
+***SG_COUNT_AA_NorthAmerica=SUM(IF((SG_Level="A+")AND(Region="North America"),1,0,))
+***SG_COUNT_E_EM=SUM(IF((SG_Level="E")AND(Region="EM (includes BRIC)"),1,0,))
+***SG_COUNT_D_EM=SUM(IF((SG_Level="D")AND(Region="EM (includes BRIC)"),1,0,))
+***SG_COUNT_C_EM=SUM(IF((SG_Level="C")AND(Region="EM (includes BRIC)"),1,0,))
+***SG_COUNT_B_EM=SUM(IF((SG_Level="B")AND(Region="EM (includes BRIC)"),1,0,))
+***SG_COUNT_A_EM=SUM(IF((SG_Level="A")AND(Region="EM (includes BRIC)"),1,0,))
+***SG_COUNT_AA_EM=SUM(IF((SG_Level="A+")AND(Region="EM (includes BRIC)"),1,0,))
+***SG_COUNT_E_AsiaPacific=SUM(IF((SG_Level="E")AND(Region="Asia-Pacific"),1,0,))
+***SG_COUNT_D_AsiaPacific=SUM(IF((SG_Level="D")AND(Region="Asia-Pacific"),1,0,))
+***SG_COUNT_C_AsiaPacific=SUM(IF((SG_Level="C")AND(Region="Asia-Pacific"),1,0,))
+***SG_COUNT_B_AsiaPacific=SUM(IF((SG_Level="B")AND(Region="Asia-Pacific"),1,0,))
+***SG_COUNT_A_AsiaPacific=SUM(IF((SG_Level="A")AND(Region="Asia-Pacific"),1,0,))
+***SG_COUNT_AA_AsiaPacific=SUM(IF((SG_Level="A+")AND(Region="Asia-Pacific"),1,0,))
 ***SG_COUNT_Europe=VALUE(SG_COUNT_E_Europe)+VALUE(SG_COUNT_D_Europe)+VALUE(SG_COUNT_C_Europe)+VALUE(SG_COUNT_B_Europe)+VALUE(SG_COUNT_A_Europe)+VALUE(SG_COUNT_AA_Europe)
 ***SG_COUNT_NorthAmerica=VALUE(SG_COUNT_E_NorthAmerica)+VALUE(SG_COUNT_D_NorthAmerica)+VALUE(SG_COUNT_C_NorthAmerica)+VALUE(SG_COUNT_B_NorthAmerica)+VALUE(SG_COUNT_A_NorthAmerica)+VALUE(SG_COUNT_AA_NorthAmerica)
 ***SG_COUNT_EM=VALUE(SG_COUNT_E_EM)+VALUE(SG_COUNT_D_EM)+VALUE(SG_COUNT_C_EM)+VALUE(SG_COUNT_B_EM)+VALUE(SG_COUNT_A_EM)+VALUE(SG_COUNT_AA_EM)
@@ -972,14 +855,14 @@ IF((RegionRobeco="Asia-Pacific"),0,0
 ***PE_COUNT_EM=VALUE(PE_COUNT_E_EM)+VALUE(PE_COUNT_D_EM)+VALUE(PE_COUNT_C_EM)+VALUE(PE_COUNT_B_EM)+VALUE(PE_COUNT_A_EM)+VALUE(PE_COUNT_AA_EM)
 ***PE_COUNT_AsiaPacific=VALUE(PE_COUNT_E_AsiaPacific)+VALUE(PE_COUNT_D_AsiaPacific)+VALUE(PE_COUNT_C_AsiaPacific)+VALUE(PE_COUNT_B_AsiaPacific)+VALUE(PE_COUNT_A_AsiaPacific)+VALUE(PE_COUNT_AA_AsiaPacific)
 ***SG_COUNT_ROB=VALUE(
-IF((RegionRobeco="Europe"),VALUE(SG_COUNT_Europe),
-IF((RegionRobeco="North America"),VALUE(SG_COUNT_NorthAmerica),
-IF((RegionRobeco="EM (includes BRIC)"),VALUE(SG_COUNT_EM),
-IF((RegionRobeco="Asia-Pacific"),VALUE(SG_COUNT_AsiaPacific),0
+IF((Region="Europe"),VALUE(SG_COUNT_Europe),
+IF((Region="North America"),VALUE(SG_COUNT_NorthAmerica),
+IF((Region="EM (includes BRIC)"),VALUE(SG_COUNT_EM),
+IF((Region="Asia-Pacific"),VALUE(SG_COUNT_AsiaPacific),0
 )))))
 ***PE_COUNT_ROB=VALUE(
-IF((RegionRobeco="Europe"),VALUE(PE_COUNT_Europe),
-IF((RegionRobeco="North America"),VALUE(PE_COUNT_NorthAmerica),
-IF((RegionRobeco="EM (includes BRIC)"),VALUE(PE_COUNT_EM),
-IF((RegionRobeco="Asia-Pacific"),VALUE(PE_COUNT_AsiaPacific),0
+IF((Region="Europe"),VALUE(PE_COUNT_Europe),
+IF((Region="North America"),VALUE(PE_COUNT_NorthAmerica),
+IF((Region="EM (includes BRIC)"),VALUE(PE_COUNT_EM),
+IF((Region="Asia-Pacific"),VALUE(PE_COUNT_AsiaPacific),0
 )))))
