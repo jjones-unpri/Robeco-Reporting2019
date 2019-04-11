@@ -15,8 +15,7 @@ IF(PARTICIPANT_FIELD(1)="AO", "Asset Owner")))
 IF((Signatory_Type="Investment Manager") AND (FM_50=">50%"), "Fund Management - Majority",
 IF((Signatory_Type="Investment Manager") AND (FOF_50=">50%"), "Fund of funds, manager of managers, sub-advised products - Majority",
 IF((Signatory_Type="Investment Manager") AND (Other_50=">50%"), "Other", 
-IF((Signatory_Type="Investment Manager") AND (Category_IM="Execution and advisory only services"),"Execution and advisory only services","Mixed Services",
-)))))
+IF((Signatory_Type="Investment Manager") AND (Category_IM="Execution and advisory only services"),"Execution and advisory only services","Mixed Services")))))
 ***Region=TEXT(PARTICIPANT_FIELD(16))
 ***Country=TEXT(PARTICIPANT_FIELD(6))
 
@@ -67,30 +66,18 @@ IF((Signatory_Type="Investment Manager") AND (Category_IM="Execution and advisor
 /* 2019 scores */
 ***SG_Level=TEXT(IMPORT_TEXT3(Robeco_2019_Assessment_SG,"19_SG_BAND",2019_USER_ENTRY_ID))
 ***PE_Level=TEXT(IMPORT_TEXT3(Robeco_2019_Assessment_PE,"19_PE_BAND",2019_USER_ENTRY_ID))
-***Overview_SG_A+=TEXT(
-IF((SG_Level="A+"),"A+", "{DELETE_ENTIRE_ROW}"))
-***Overview_SG_A=TEXT(
-IF((SG_Level="A"),"A", "{DELETE_ENTIRE_ROW}"))
-***Overview_SG_B=TEXT(
-IF((SG_Level="B"),"B", "{DELETE_ENTIRE_ROW}"))
-***Overview_SG_C=TEXT(
-IF((SG_Level="C"),"C", "{DELETE_ENTIRE_ROW}"))
-***Overview_SG_D=TEXT(
-IF((SG_Level="D"),"D", "{DELETE_ENTIRE_ROW}"))
-***Overview_SG_E=TEXT(
-IF((SG_Level="E"),"E", "{DELETE_ENTIRE_ROW}"))
-***Overview_PE_A+=TEXT(
-IF((PE_Level="A+"),"A+", "{DELETE_ENTIRE_ROW}"))
-***Overview_PE_A=TEXT(
-IF((PE_Level="A"),"A", "{DELETE_ENTIRE_ROW}"))
-***Overview_PE_B=TEXT(
-IF((PE_Level="B"),"B", "{DELETE_ENTIRE_ROW}"))
-***Overview_PE_C=TEXT(
-IF((PE_Level="C"),"C", "{DELETE_ENTIRE_ROW}"))
-***Overview_PE_D=TEXT(
-IF((PE_Level="D"),"D", "{DELETE_ENTIRE_ROW}"))
-***Overview_PE_E=TEXT(
-IF((PE_Level="E"),"E", "{DELETE_ENTIRE_ROW}"))
+***Overview_SG_A+=TEXT(IF((SG_Level="A+"),"A+", "{DELETE_ENTIRE_ROW}"))
+***Overview_SG_A=TEXT(IF((SG_Level="A"),"A", "{DELETE_ENTIRE_ROW}"))
+***Overview_SG_B=TEXT(IF((SG_Level="B"),"B", "{DELETE_ENTIRE_ROW}"))
+***Overview_SG_C=TEXT(IF((SG_Level="C"),"C", "{DELETE_ENTIRE_ROW}"))
+***Overview_SG_D=TEXT(IF((SG_Level="D"),"D", "{DELETE_ENTIRE_ROW}"))
+***Overview_SG_E=TEXT(IF((SG_Level="E"),"E", "{DELETE_ENTIRE_ROW}"))
+***Overview_PE_A+=TEXT(IF((PE_Level="A+"),"A+", "{DELETE_ENTIRE_ROW}"))
+***Overview_PE_A=TEXT(IF((PE_Level="A"),"A", "{DELETE_ENTIRE_ROW}"))
+***Overview_PE_B=TEXT(IF((PE_Level="B"),"B", "{DELETE_ENTIRE_ROW}"))
+***Overview_PE_C=TEXT(IF((PE_Level="C"),"C", "{DELETE_ENTIRE_ROW}"))
+***Overview_PE_D=TEXT(IF((PE_Level="D"),"D", "{DELETE_ENTIRE_ROW}"))
+***Overview_PE_E=TEXT(IF((PE_Level="E"),"E", "{DELETE_ENTIRE_ROW}"))
 ***SG1_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_SG,"SG_01_SCORE_TEXT",2019_USER_ENTRY_ID)
 ***SG2_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_SG,"SG_02_SCORE_TEXT",2019_USER_ENTRY_ID)
 ***SG5_SCORE_TEXT=IMPORT_TEXT3(Robeco_2019_Assessment_SG,"SG_05_SCORE_TEXT",2019_USER_ENTRY_ID)
@@ -242,6 +229,7 @@ IF((PE_Level="E"),"0", VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_PE,"PE_Denom",
 ***PE_Post_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_PE,"PE_Post_Section",2019_USER_ENTRY_ID))
 ***PE_Out_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_PE,"PE_Out_Section",2019_USER_ENTRY_ID))
 ***PE_Com_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_PE,"PE_Com_Section",2019_USER_ENTRY_ID))
+
 ***SG_Strat_E1=VALUE(
 IF((Main Strategy="Growth Capital"),0,
 IF((Main Strategy="Leveraged Buyout"),0,
@@ -450,18 +438,12 @@ IF((Combined_Per<=0.95),"A",
 IF((Combined_Per>0.95),"A+"
 )))))))
 ***Average_Score=AVERAGE(Combined_Score)
-***Overview_Combined_Band_A+=TEXT(
-IF((Combined_Band="A+"),"A+", "{DELETE_ENTIRE_ROW}"))
-***Overview_Combined_A=TEXT(
-IF((Combined_Band="A"),"A", "{DELETE_ENTIRE_ROW}"))
-***Overview_Combined_B=TEXT(
-IF((Combined_Band="B"),"B", "{DELETE_ENTIRE_ROW}"))
-***Overview_Combined_C=TEXT(
-IF((Combined_Band="C"),"C", "{DELETE_ENTIRE_ROW}"))
-***Overview_Combined_D=TEXT(
-IF((Combined_Band="D"),"D", "{DELETE_ENTIRE_ROW}"))
-***Overview_Combined_E=TEXT(
-IF((Combined_Band="E"),"E", "{DELETE_ENTIRE_ROW}"))
+***Overview_Combined_Band_A+=TEXT(IF((Combined_Band="A+"),"A+", "{DELETE_ENTIRE_ROW}"))
+***Overview_Combined_A=TEXT(IF((Combined_Band="A"),"A", "{DELETE_ENTIRE_ROW}"))
+***Overview_Combined_B=TEXT(IF((Combined_Band="B"),"B", "{DELETE_ENTIRE_ROW}"))
+***Overview_Combined_C=TEXT(IF((Combined_Band="C"),"C", "{DELETE_ENTIRE_ROW}"))
+***Overview_Combined_D=TEXT(IF((Combined_Band="D"),"D", "{DELETE_ENTIRE_ROW}"))
+***Overview_Combined_E=TEXT(IF((Combined_Band="E"),"E", "{DELETE_ENTIRE_ROW}"))
 
 /* Value calculations */
 ***SG1_Value=VALUE(
@@ -722,7 +704,9 @@ IF((PE_19_Value=PE_18_Value),"equal.jpg","equal.jpg"
 ***SG_MEDIAN=TEXT("B")
 ***PE_MEDIAN=TEXT("A")
 ***COMBINED_SCORE_MEDIAN=TEXT("B")
+/* "Total respondents" refers to number of Robeco reporters */
 ***TOTAL_RESPONDENTS=TEXT("63")
+/* "Total respondents"2 refers to number of PRI reporters to that module*/
 ***TOTAL_RESPONDENTS2=TEXT("303")
 
 /* Regional calculations */
