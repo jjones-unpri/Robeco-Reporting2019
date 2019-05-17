@@ -717,73 +717,73 @@ IF((PE_19_Value=PE_18_Value),"equal.jpg","equal.jpg"
 ***SG_Region_E=VALUE(
 IF((Region="Europe"),0,
 IF((Region="North America"),0,
-IF((Region="Emerging Markets (includes BRIC)"),0,
+IF((Region="EM (includes BRIC)"),0,
 IF((Region="Asia-Pacific"),0,0
 )))))
 ***SG_Region_D=VALUE(
 IF((Region="Europe"),0,
 IF((Region="North America"),4,
-IF((Region="Emerging Markets (includes BRIC)"),0,
+IF((Region="EM (includes BRIC)"),0,
 IF((Region="Asia-Pacific"),0,0
 )))))
 ***SG_Region_C=VALUE(
 IF((Region="Europe"),19,
 IF((Region="North America"),24,
-IF((Region="Emerging Markets (includes BRIC)"),22,
+IF((Region="EM (includes BRIC)"),22,
 IF((Region="Asia-Pacific"),0,0
 )))))
 ***SG_Region_B=VALUE(
 IF((Region="Europe"),37,
 IF((Region="North America"),48,
-IF((Region="Emerging Markets (includes BRIC)"),67,
+IF((Region="EM (includes BRIC)"),67,
 IF((Region="Asia-Pacific"),100,0
 )))))
 ***SG_Region_A=VALUE(
 IF((Region="Europe"),22,
 IF((Region="North America"),16,
-IF((Region="Emerging Markets (includes BRIC)"),11,
+IF((Region="EM (includes BRIC)"),11,
 IF((Region="Asia-Pacific"),0,0
 )))))
 ***SG_Region_AA=VALUE(
 IF((Region="Europe"),22,
 IF((Region="North America"),8,
-IF((Region="Emerging Markets (includes BRIC)"),0,
+IF((Region="EM (includes BRIC)"),0,
 IF((Region="Asia-Pacific"),0,0
 )))))
 ***PE_Region_E=VALUE(
 IF((Region="Europe"),0,
 IF((Region="North America"),0,
-IF((Region="Emerging Markets (includes BRIC)"),0,
+IF((Region="EM (includes BRIC)"),0,
 IF((Region="Asia-Pacific"),0,0
 )))))
 ***PE_Region_D=VALUE(
 IF((Region="Europe"),0,
 IF((Region="North America"),4,
-IF((Region="Emerging Markets (includes BRIC)"),0,
+IF((Region="EM (includes BRIC)"),0,
 IF((Region="Asia-Pacific"),0,0
 )))))
 ***PE_Region_C=VALUE(
 IF((Region="Europe"),7,
 IF((Region="North America"),20,
-IF((Region="Emerging Markets (includes BRIC)"),33,
+IF((Region="EM (includes BRIC)"),33,
 IF((Region="Asia-Pacific"),0,0
 )))))
 ***PE_Region_B=VALUE(
 IF((Region="Europe"),19,
 IF((Region="North America"),40,
-IF((Region="Emerging Markets (includes BRIC)"),22,
+IF((Region="EM (includes BRIC)"),22,
 IF((Region="Asia-Pacific"),50,0
 )))))
 ***PE_Region_A=VALUE(
 IF((Region="Europe"),56,
 IF((Region="North America"),32,
-IF((Region="Emerging Markets (includes BRIC)"),44,
+IF((Region="EM (includes BRIC)"),44,
 IF((Region="Asia-Pacific"),50,0
 )))))
 ***PE_Region_AA=VALUE(
 IF((Region="Europe"),19,
 IF((Region="North America"),4,
-IF((Region="Emerging Markets (includes BRIC)"),0,
+IF((Region="EM (includes BRIC)"),0,
 IF((Region="Asia-Pacific"),0,0
 )))))
 ***PE_COUNT_E_Europe=SUM(IF((PE_Level="E")AND(Region="Europe"),1,0,))
@@ -798,12 +798,12 @@ IF((Region="Asia-Pacific"),0,0
 ***PE_COUNT_B_NorthAmerica=SUM(IF((PE_Level="B")AND(Region="North America"),1,0,))
 ***PE_COUNT_A_NorthAmerica=SUM(IF((PE_Level="A")AND(Region="North America"),1,0,))
 ***PE_COUNT_AA_NorthAmerica=SUM(IF((PE_Level="A+")AND(Region="North America"),1,0,))
-***PE_COUNT_E_EM=SUM(IF((PE_Level="E")AND(Region="Emerging Markets (includes BRIC)"),1,0,))
-***PE_COUNT_D_EM=SUM(IF((PE_Level="D")AND(Region="Emerging Markets (includes BRIC)"),1,0,))
-***PE_COUNT_C_EM=SUM(IF((PE_Level="C")AND(Region="Emerging Markets (includes BRIC)"),1,0,))
-***PE_COUNT_B_EM=SUM(IF((PE_Level="B")AND(Region="Emerging Markets (includes BRIC)"),1,0,))
-***PE_COUNT_A_EM=SUM(IF((PE_Level="A")AND(Region="Emerging Markets (includes BRIC)"),1,0,))
-***PE_COUNT_AA_EM=SUM(IF((PE_Level="A+")AND(Region="Emerging Markets (includes BRIC)"),1,0,))
+***PE_COUNT_E_EM=SUM(IF((PE_Level="E")AND(Region="EM (includes BRIC)"),1,0,))
+***PE_COUNT_D_EM=SUM(IF((PE_Level="D")AND(Region="EM (includes BRIC)"),1,0,))
+***PE_COUNT_C_EM=SUM(IF((PE_Level="C")AND(Region="EM (includes BRIC)"),1,0,))
+***PE_COUNT_B_EM=SUM(IF((PE_Level="B")AND(Region="EM (includes BRIC)"),1,0,))
+***PE_COUNT_A_EM=SUM(IF((PE_Level="A")AND(Region="EM (includes BRIC)"),1,0,))
+***PE_COUNT_AA_EM=SUM(IF((PE_Level="A+")AND(Region="EM (includes BRIC)"),1,0,))
 ***PE_COUNT_E_AsiaPacific=SUM(IF((PE_Level="E")AND(Region="Asia-Pacific"),1,0,))
 ***PE_COUNT_D_AsiaPacific=SUM(IF((PE_Level="D")AND(Region="Asia-Pacific"),1,0,))
 ***PE_COUNT_C_AsiaPacific=SUM(IF((PE_Level="C")AND(Region="Asia-Pacific"),1,0,))
@@ -822,12 +822,12 @@ IF((Region="Asia-Pacific"),0,0
 ***SG_COUNT_B_NorthAmerica=SUM(IF((SG_Level="B")AND(Region="North America"),1,0,))
 ***SG_COUNT_A_NorthAmerica=SUM(IF((SG_Level="A")AND(Region="North America"),1,0,))
 ***SG_COUNT_AA_NorthAmerica=SUM(IF((SG_Level="A+")AND(Region="North America"),1,0,))
-***SG_COUNT_E_EM=SUM(IF((SG_Level="E")AND(Region="Emerging Markets (includes BRIC)"),1,0,))
-***SG_COUNT_D_EM=SUM(IF((SG_Level="D")AND(Region="Emerging Markets (includes BRIC)"),1,0,))
-***SG_COUNT_C_EM=SUM(IF((SG_Level="C")AND(Region="Emerging Markets (includes BRIC)"),1,0,))
-***SG_COUNT_B_EM=SUM(IF((SG_Level="B")AND(Region="Emerging Markets (includes BRIC)"),1,0,))
-***SG_COUNT_A_EM=SUM(IF((SG_Level="A")AND(Region="Emerging Markets (includes BRIC)"),1,0,))
-***SG_COUNT_AA_EM=SUM(IF((SG_Level="A+")AND(Region="Emerging Markets (includes BRIC)"),1,0,))
+***SG_COUNT_E_EM=SUM(IF((SG_Level="E")AND(Region="EM (includes BRIC)"),1,0,))
+***SG_COUNT_D_EM=SUM(IF((SG_Level="D")AND(Region="EM (includes BRIC)"),1,0,))
+***SG_COUNT_C_EM=SUM(IF((SG_Level="C")AND(Region="EM (includes BRIC)"),1,0,))
+***SG_COUNT_B_EM=SUM(IF((SG_Level="B")AND(Region="EM (includes BRIC)"),1,0,))
+***SG_COUNT_A_EM=SUM(IF((SG_Level="A")AND(Region="EM (includes BRIC)"),1,0,))
+***SG_COUNT_AA_EM=SUM(IF((SG_Level="A+")AND(Region="EM (includes BRIC)"),1,0,))
 ***SG_COUNT_E_AsiaPacific=SUM(IF((SG_Level="E")AND(Region="Asia-Pacific"),1,0,))
 ***SG_COUNT_D_AsiaPacific=SUM(IF((SG_Level="D")AND(Region="Asia-Pacific"),1,0,))
 ***SG_COUNT_C_AsiaPacific=SUM(IF((SG_Level="C")AND(Region="Asia-Pacific"),1,0,))
@@ -845,12 +845,12 @@ IF((Region="Asia-Pacific"),0,0
 ***SG_COUNT_ROB=VALUE(
 IF((Region="Europe"),VALUE(SG_COUNT_Europe),
 IF((Region="North America"),VALUE(SG_COUNT_NorthAmerica),
-IF((Region="Emerging Markets (includes BRIC)"),VALUE(SG_COUNT_EM),
+IF((Region="EM (includes BRIC)"),VALUE(SG_COUNT_EM),
 IF((Region="Asia-Pacific"),VALUE(SG_COUNT_AsiaPacific),0
 )))))
 ***PE_COUNT_ROB=VALUE(
 IF((Region="Europe"),VALUE(PE_COUNT_Europe),
 IF((Region="North America"),VALUE(PE_COUNT_NorthAmerica),
-IF((Region="Emerging Markets (includes BRIC)"),VALUE(PE_COUNT_EM),
+IF((Region="EM (includes BRIC)"),VALUE(PE_COUNT_EM),
 IF((Region="Asia-Pacific"),VALUE(PE_COUNT_AsiaPacific),0
 )))))
