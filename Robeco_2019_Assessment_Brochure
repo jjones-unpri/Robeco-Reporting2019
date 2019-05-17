@@ -143,6 +143,8 @@ IF((CM1_SCORE_TEXT="1"),"1_Star.jpg",
 IF((CM1_SCORE_TEXT="2"),"2_Stars.jpg",
 IF((CM1_SCORE_TEXT="3"),"3_Stars.jpg"))))))
 ***SG_Total=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_SG,"SG_TOTAL",2019_USER_ENTRY_ID))
+***SG_Denom=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_SG,"SG_Denom",2019_USER_ENTRY_ID))
+***SG_Core_Inds=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_SG,"SG_Core_Inds",2019_USER_ENTRY_ID))
 ***RI_Policy_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_SG,"RI_Policy_Section",2019_USER_ENTRY_ID))
 ***Objectives_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_SG,"Objectives_Section",2019_USER_ENTRY_ID))
 ***HR_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_SG,"HR_Section",2019_USER_ENTRY_ID))
@@ -429,7 +431,7 @@ IF((Main Strategy="Other"),5,
 IF((Main Strategy="Mixed"),13
 ))))))
 ***Combined_Score=VALUE(SG_Total)+VALUE(PE_Total)
-***Combined_Denom=VALUE(21)+VALUE(PE_Max)
+***Combined_Denom=VALUE(SG_Denom)+VALUE(PE_Max)
 ***Combined_Per=DIVIDE(Combined_Score,Combined_Denom)
 ***Combined_Band=TEXT(
 IF((Combined_Per=0),"E",
