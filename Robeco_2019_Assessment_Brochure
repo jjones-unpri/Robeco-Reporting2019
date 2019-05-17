@@ -11,13 +11,15 @@ IF(PARTICIPANT_FIELD(1)="AO", "Asset Owner")))
 ***FM_50=RESPONSE("(>50% Choice", "24a975bba0e64a66b45fea8160c73afb", 2019_SURVEY_ID)
 ***FOF_50=RESPONSE(">50% Choice", "24a975bba0e64a66b45fea8160c73afb_2", 2019_SURVEY_ID)
 ***Other_50=RESPONSE(">50% Choice", "24a975bba0e64a66b45fea8160c73afb_3", 2019_SURVEY_ID)
+***E_and_A=RESPONSE("Execution and advisory services", "0fd07c6b459a496295224d1a2d414536", 2019_SURVEY_ID)
 ***Category=TEXT(
 IF((Signatory_Type="Investment Manager") AND (FM_50=">50%"), "Fund Management - Majority",
 IF((Signatory_Type="Investment Manager") AND (FOF_50=">50%"), "Fund of funds, manager of managers, sub-advised products - Majority",
 IF((Signatory_Type="Investment Manager") AND (Other_50=">50%"), "Other", 
-IF((Signatory_Type="Investment Manager") AND (Category_IM="Execution and advisory only services"),"Execution and advisory only services","Mixed Services")))))
+IF((Signatory_Type="Investment Manager") AND (E_and_A<>""),"Execution and advisory only services","Mixed Services")))))
 ***Region=TEXT(PARTICIPANT_FIELD(16))
 ***Country=TEXT(PARTICIPANT_FIELD(6))
+***Reported_Country=RESPONSE("OO_02.1_a HQ", "481d8e8154a147f1b721013503ddcbc1", 2019_SURVEY_ID)
 
 /* Response information */
 ***PE_internal=RESPONSE_IGNORE_STATUS("(OO_05.1_F1_A) Q (no name)","67c7896f98114999a55bf099023d8975_44",2019_SURVEY_ID)
