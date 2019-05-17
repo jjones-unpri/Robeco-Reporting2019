@@ -131,7 +131,7 @@ IF((SG9_SCORE_TEXT="1"),"1_Star.jpg",
 IF((SG9_SCORE_TEXT="2"),"2_Stars.jpg",
 IF((SG9_SCORE_TEXT="3"),"3_Stars.jpg"))))))
 ***SG14_Stars=TEXT(
-IF((SG_Level="NA"),"NA.jpg",
+IF((SG_Level="NA")OR(SG14_SCORE_TEXT="NA"),"NA.jpg",
 IF((SG14_SCORE_TEXT="0"),"0_Stars.jpg",
 IF((SG14_SCORE_TEXT="1"),"1_Star.jpg",
 IF((SG14_SCORE_TEXT="2"),"2_Stars.jpg",
@@ -709,8 +709,8 @@ IF((PE_19_Value=PE_18_Value),"equal.jpg","equal.jpg"
 ***PE_MEDIAN=TEXT("A")
 ***COMBINED_SCORE_MEDIAN=TEXT("B")
 /* "Total respondents" refers to number of Robeco reporters */
-***TOTAL_RESPONDENTS=TEXT("63")
-/* "Total respondents"2 refers to number of PRI reporters to that module*/
+***TOTAL_RESPONDENTS=TEXT("61")
+/* "Total respondents"2 refers to number of PRI signatory reporters to that module*/
 ***TOTAL_RESPONDENTS2=TEXT("303")
 
 /* Regional calculations */
