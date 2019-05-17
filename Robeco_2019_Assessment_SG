@@ -35,7 +35,7 @@
 ***SG_01_ThreeStar=VALUE(IF((SG_01_1_AUMAcc>0)AND(SG_01_1_PolAcc>0)AND(SG_01_1_ak_SUM>200),3,0))
 ***SG_01_SCORE=VALUE(IF(SG_01_ThreeStar>SG_01_TwoStar,3,IF(SG_01_TwoStar>SG_01_OneStar,2,IF(SG_01_OneStar>0,1,0))))
 
-/* SG 02 scoring - ROBECO SPECIFIC*/
+/* SG 02 scoring - ROBECO SPECIFIC; attachment is mandatory if "Yes" so not needed to be defined below */
 
 ***SG_02_NO=IFBLANK(SCORE("We cannot provide any investment policy documents", "1e24db39586c4f4a9d56564a68ded11e", SURVEY_ID),0)
 ***SG_02_a=IFBLANK(SCORE("Policy setting out your overall approach", "33010614cbf0404fa243156c742abf5c_10", SURVEY_ID),0)
