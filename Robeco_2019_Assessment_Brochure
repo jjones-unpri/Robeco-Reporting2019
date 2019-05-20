@@ -739,7 +739,7 @@ IF((PE_19_Value=PE_18_Value),"equal.jpg","equal.jpg"
 /* "Total respondents2" refers to number of PRI signatory reporters in the module (did both SG and PE!) */
 ***TOTAL_RESPONDENTS2=TEXT("373")
 
-/* Regional calculations */
+/* Regional calculations - these are PERCENT not absolute figures! */
 /* For chart "PE_Levels_RegionBar_Chart" and "SG_Levels_RegionBar_Chart" */
 
 ***SG_Region_E=VALUE(
@@ -751,32 +751,32 @@ IF((Region="North America"),0,0
 ***SG_Region_D=VALUE(
 IF((Region="Asia-Pacific"),0,
 IF((Region="EM (includes BRIC)"),0,
-IF((Region="Europe"),2,
+IF((Region="Europe"),6,
 IF((Region="North America"),0,0
 )))))
 ***SG_Region_C=VALUE(
 IF((Region="Asia-Pacific"),0,
 IF((Region="EM (includes BRIC)"),0,
-IF((Region="Europe"),2,
-IF((Region="North America"),6,0
+IF((Region="Europe"),6,
+IF((Region="North America"),35,0
 )))))
 ***SG_Region_B=VALUE(
-IF((Region="Asia-Pacific"),2,
-IF((Region="EM (includes BRIC)"),3,
-IF((Region="Europe"),8,
-IF((Region="North America"),3,0
+IF((Region="Asia-Pacific"),100,
+IF((Region="EM (includes BRIC)"),50,
+IF((Region="Europe"),22,
+IF((Region="North America"),18,0
 )))))
 ***SG_Region_A=VALUE(
 IF((Region="Asia-Pacific"),0,
-IF((Region="EM (includes BRIC)"),2,
-IF((Region="Europe"),13,
-IF((Region="North America"),3,0
+IF((Region="EM (includes BRIC)"),33,
+IF((Region="Europe"),36,
+IF((Region="North America"),18,0
 )))))
 ***SG_Region_AA=VALUE(
 IF((Region="Asia-Pacific"),0,
-IF((Region="EM (includes BRIC)"),1,
-IF((Region="Europe"),11,
-IF((Region="North America"),5,0
+IF((Region="EM (includes BRIC)"),17,
+IF((Region="Europe"),31,
+IF((Region="North America"),29,0
 )))))
 ***PE_Region_E=VALUE(
 IF((Region="Asia-Pacific"),0,
@@ -788,31 +788,31 @@ IF((Region="North America"),0,0
 IF((Region="Asia-Pacific"),0,
 IF((Region="EM (includes BRIC)"),0,
 IF((Region="Europe"),0,
-IF((Region="North America"),1,0
+IF((Region="North America"),6,0
 )))))
 ***PE_Region_C=VALUE(
 IF((Region="Asia-Pacific"),0,
-IF((Region="EM (includes BRIC)"),1,
-IF((Region="Europe"),2,
+IF((Region="EM (includes BRIC)"),17,
+IF((Region="Europe"),6,
 IF((Region="North America"),0,0
 )))))
 ***PE_Region_B=VALUE(
-IF((Region="Asia-Pacific"),1,
-IF((Region="EM (includes BRIC)"),1,
-IF((Region="Europe"),7,
-IF((Region="North America"),3,0
+IF((Region="Asia-Pacific"),50,
+IF((Region="EM (includes BRIC)"),17,
+IF((Region="Europe"),19,
+IF((Region="North America"),18,0
 )))))
 ***PE_Region_A=VALUE(
-IF((Region="Asia-Pacific"),1,
-IF((Region="EM (includes BRIC)"),3,
-IF((Region="Europe"),18,
-IF((Region="North America"),10,0
+IF((Region="Asia-Pacific"),50,
+IF((Region="EM (includes BRIC)"),50,
+IF((Region="Europe"),50,
+IF((Region="North America"),59,0
 )))))
 ***PE_Region_AA=VALUE(
 IF((Region="Asia-Pacific"),0,
-IF((Region="EM (includes BRIC)"),1,
-IF((Region="Europe"),9,
-IF((Region="North America"),3,0
+IF((Region="EM (includes BRIC)"),17,
+IF((Region="Europe"),25,
+IF((Region="North America"),18,0
 )))))
 ***PE_COUNT_E_Europe=SUM(IF((PE_Level="E")AND(Region="Europe"),1,0,))
 ***PE_COUNT_D_Europe=SUM(IF((PE_Level="D")AND(Region="Europe"),1,0,))
