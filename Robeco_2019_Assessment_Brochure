@@ -148,6 +148,7 @@ IF((CM1_SCORE_TEXT="3"),"3_Stars.jpg"))))))
 ***RI_Policy_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_SG,"RI_Policy_Section",2019_USER_ENTRY_ID))
 ***Objectives_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_SG,"Objectives_Section",2019_USER_ENTRY_ID))
 ***HR_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_SG,"HR_Section",2019_USER_ENTRY_ID))
+***Climate_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_SG,"Climate_Section",2019_USER_ENTRY_ID))
 ***Promoting_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_SG,"Promoting_Section",2019_USER_ENTRY_ID))
 ***Assurance_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_SG,"Assurance_Section",2019_USER_ENTRY_ID))
 ***PE2_Stars=TEXT(
@@ -234,201 +235,203 @@ IF((PE_Level="E"),"0", VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_PE,"PE_Denom",
 ***PE_Out_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_PE,"PE_Out_Section",2019_USER_ENTRY_ID))
 ***PE_Com_Section=VALUE(IMPORT_VALUE3(Robeco_2019_Assessment_PE,"PE_Com_Section",2019_USER_ENTRY_ID))
 
-***SG_Strat_E1=VALUE(
+/* Peering scores on strategy, used in charts SG_Strat_Levels and PE_Strat_Levels . Figures are percentages*/
+
+***SG_Strat_E_Rob=VALUE(
 IF((Main Strategy="Growth Capital"),0,
 IF((Main Strategy="Leveraged Buyout"),0,
 IF((Main Strategy="Venture Capital"),0,
 IF((Main Strategy="Other"),0,
 IF((Main Strategy="Mixed"),0
 ))))))
-***SG_Strat_D1=VALUE(
-IF((Main Strategy="Growth Capital"),0,
-IF((Main Strategy="Leveraged Buyout"),0,
-IF((Main Strategy="Venture Capital"),8,
-IF((Main Strategy="Other"),0,
-IF((Main Strategy="Mixed"),0
-))))))
-***SG_Strat_C1=VALUE(
-IF((Main Strategy="Growth Capital"),25,
-IF((Main Strategy="Leveraged Buyout"),20,
-IF((Main Strategy="Venture Capital"),8,
-IF((Main Strategy="Other"),25,
-IF((Main Strategy="Mixed"),33
-))))))
-***SG_Strat_B1=VALUE(
-IF((Main Strategy="Growth Capital"),44,
-IF((Main Strategy="Leveraged Buyout"),44,
-IF((Main Strategy="Venture Capital"),58,
-IF((Main Strategy="Other"),50,
-IF((Main Strategy="Mixed"),50
-))))))
-***SG_Strat_A1=VALUE(
-IF((Main Strategy="Growth Capital"),25,
-IF((Main Strategy="Leveraged Buyout"),12,
-IF((Main Strategy="Venture Capital"),25,
-IF((Main Strategy="Other"),25,
-IF((Main Strategy="Mixed"),17
-))))))
-***SG_Strat_A11=VALUE(
+***SG_Strat_D_Rob=VALUE(
 IF((Main Strategy="Growth Capital"),6,
-IF((Main Strategy="Leveraged Buyout"),24,
-IF((Main Strategy="Venture Capital"),0,
-IF((Main Strategy="Other"),0,
-IF((Main Strategy="Mixed"),0
-))))))
-***SG_Strat_NO1=VALUE(
-IF((Main Strategy="Growth Capital"),25,
-IF((Main Strategy="Leveraged Buyout"),40,
-IF((Main Strategy="Venture Capital"),19,
-IF((Main Strategy="Other"),6,
-IF((Main Strategy="Mixed"),10
-))))))
-***SG_Strat_E2=VALUE(
-IF((Main Strategy="Growth Capital"),0,
 IF((Main Strategy="Leveraged Buyout"),0,
 IF((Main Strategy="Venture Capital"),0,
 IF((Main Strategy="Other"),0,
+IF((Main Strategy="Mixed"),13
+))))))
+***SG_Strat_C_Rob=VALUE(
+IF((Main Strategy="Growth Capital"),12,
+IF((Main Strategy="Leveraged Buyout"),15,
+IF((Main Strategy="Venture Capital"),14,
+IF((Main Strategy="Other"),50,
 IF((Main Strategy="Mixed"),0
 ))))))
-***SG_Strat_D2=VALUE(
-IF((Main Strategy="Growth Capital"),0,
-IF((Main Strategy="Leveraged Buyout"),1,
-IF((Main Strategy="Venture Capital"),0,
-IF((Main Strategy="Other"),0,
-IF((Main Strategy="Mixed"),2
-))))))
-***SG_Strat_C2=VALUE(
+***SG_Strat_B_Rob=VALUE(
 IF((Main Strategy="Growth Capital"),18,
-IF((Main Strategy="Leveraged Buyout"),14,
-IF((Main Strategy="Venture Capital"),13,
-IF((Main Strategy="Other"),35,
-IF((Main Strategy="Mixed"),9
-))))))
-***SG_Strat_B2=VALUE(
-IF((Main Strategy="Growth Capital"),39,
-IF((Main Strategy="Leveraged Buyout"),33,
-IF((Main Strategy="Venture Capital"),34,
-IF((Main Strategy="Other"),68,
-IF((Main Strategy="Mixed"),29
-))))))
-***SG_Strat_A2=VALUE(
-IF((Main Strategy="Growth Capital"),29,
-IF((Main Strategy="Leveraged Buyout"),32,
-IF((Main Strategy="Venture Capital"),30,
-IF((Main Strategy="Other"),60,
-IF((Main Strategy="Mixed"),38
-))))))
-***SG_Strat_A12=VALUE(
-IF((Main Strategy="Growth Capital"),4,
-IF((Main Strategy="Leveraged Buyout"),20,
-IF((Main Strategy="Venture Capital"),24,
-IF((Main Strategy="Other"),36,
-IF((Main Strategy="Mixed"),22
-))))))
-***SG_Strat_NO2=VALUE(
-IF((Main Strategy="Growth Capital"),7,
-IF((Main Strategy="Leveraged Buyout"),37,
-IF((Main Strategy="Venture Capital"),30,
-IF((Main Strategy="Other"),11,
-IF((Main Strategy="Mixed"),15
-))))))
-***PE_Strat_E1=VALUE(
-IF((Main Strategy="Growth Capital"),0,
-IF((Main Strategy="Leveraged Buyout"),0,
-IF((Main Strategy="Venture Capital"),0,
-IF((Main Strategy="Other"),0,
-IF((Main Strategy="Mixed"),0
-))))))
-***PE_Strat_D1=VALUE(
-IF((Main Strategy="Growth Capital"),0,
-IF((Main Strategy="Leveraged Buyout"),0,
-IF((Main Strategy="Venture Capital"),8,
-IF((Main Strategy="Other"),0,
-IF((Main Strategy="Mixed"),0
-))))))
-***PE_Strat_C1=VALUE(
-IF((Main Strategy="Growth Capital"),19,
-IF((Main Strategy="Leveraged Buyout"),12,
-IF((Main Strategy="Venture Capital"),33,
-IF((Main Strategy="Other"),0,
-IF((Main Strategy="Mixed"),0
-))))))
-***PE_Strat_B1=VALUE(
-IF((Main Strategy="Growth Capital"),31,
-IF((Main Strategy="Leveraged Buyout"),20,
-IF((Main Strategy="Venture Capital"),33,
-IF((Main Strategy="Other"),25,
-IF((Main Strategy="Mixed"),50
-))))))
-***PE_Strat_A1=VALUE(
-IF((Main Strategy="Growth Capital"),44,
-IF((Main Strategy="Leveraged Buyout"),52,
-IF((Main Strategy="Venture Capital"),25,
+IF((Main Strategy="Leveraged Buyout"),30,
+IF((Main Strategy="Venture Capital"),29,
 IF((Main Strategy="Other"),50,
-IF((Main Strategy="Mixed"),50
-))))))
-***PE_Strat_A11=VALUE(
-IF((Main Strategy="Growth Capital"),6,
-IF((Main Strategy="Leveraged Buyout"),16,
-IF((Main Strategy="Venture Capital"),0,
-IF((Main Strategy="Other"),25,
-IF((Main Strategy="Mixed"),0
-))))))
-***PE_Strat_NO1=VALUE(
-IF((Main Strategy="Growth Capital"),25,
-IF((Main Strategy="Leveraged Buyout"),40,
-IF((Main Strategy="Venture Capital"),19,
-IF((Main Strategy="Other"),6,
-IF((Main Strategy="Mixed"),10
-))))))
-***PE_Strat_E2=VALUE(
-IF((Main Strategy="Growth Capital"),5,
-IF((Main Strategy="Leveraged Buyout"),1,
-IF((Main Strategy="Venture Capital"),1,
-IF((Main Strategy="Other"),0,
-IF((Main Strategy="Mixed"),3
-))))))
-***PE_Strat_D2=VALUE(
-IF((Main Strategy="Growth Capital"),11,
-IF((Main Strategy="Leveraged Buyout"),3,
-IF((Main Strategy="Venture Capital"),3,
-IF((Main Strategy="Other"),13,
-IF((Main Strategy="Mixed"),15
-))))))
-***PE_Strat_C2=VALUE(
-IF((Main Strategy="Growth Capital"),37,
-IF((Main Strategy="Leveraged Buyout"),20,
-IF((Main Strategy="Venture Capital"),18,
-IF((Main Strategy="Other"),27,
-IF((Main Strategy="Mixed"),23
-))))))
-***PE_Strat_B2=VALUE(
-IF((Main Strategy="Growth Capital"),16,
-IF((Main Strategy="Leveraged Buyout"),29,
-IF((Main Strategy="Venture Capital"),32,
-IF((Main Strategy="Other"),20,
-IF((Main Strategy="Mixed"),35
-))))))
-***PE_Strat_A2=VALUE(
-IF((Main Strategy="Growth Capital"),32,
-IF((Main Strategy="Leveraged Buyout"),36,
-IF((Main Strategy="Venture Capital"),39,
-IF((Main Strategy="Other"),40,
 IF((Main Strategy="Mixed"),25
 ))))))
-***PE_Strat_A12=VALUE(
-IF((Main Strategy="Growth Capital"),0,
-IF((Main Strategy="Leveraged Buyout"),10,
+***SG_Strat_A_Rob=VALUE(
+IF((Main Strategy="Growth Capital"),29,
+IF((Main Strategy="Leveraged Buyout"),30,
+IF((Main Strategy="Venture Capital"),29,
+IF((Main Strategy="Other"),0,
+IF((Main Strategy="Mixed"),38
+))))))
+***SG_Strat_AA_Rob=VALUE(
+IF((Main Strategy="Growth Capital"),35,
+IF((Main Strategy="Leveraged Buyout"),26,
+IF((Main Strategy="Venture Capital"),29,
+IF((Main Strategy="Other"),0,
+IF((Main Strategy="Mixed"),25
+))))))
+***SG_Strat_Nbr_Rob=VALUE(
+IF((Main Strategy="Growth Capital"),17,
+IF((Main Strategy="Leveraged Buyout"),27,
 IF((Main Strategy="Venture Capital"),7,
+IF((Main Strategy="Other"),2,
+IF((Main Strategy="Mixed"),8
+))))))
+***PE_Strat_E_Rob=VALUE(
+IF((Main Strategy="Growth Capital"),0,
+IF((Main Strategy="Leveraged Buyout"),0,
+IF((Main Strategy="Venture Capital"),0,
 IF((Main Strategy="Other"),0,
 IF((Main Strategy="Mixed"),0
 ))))))
-***PE_Strat_NO2=VALUE(
-IF((Main Strategy="Growth Capital"),6,
-IF((Main Strategy="Leveraged Buyout"),44,
-IF((Main Strategy="Venture Capital"),31,
-IF((Main Strategy="Other"),5,
+***PE_Strat_D_Rob=VALUE(
+IF((Main Strategy="Growth Capital"),0,
+IF((Main Strategy="Leveraged Buyout"),0,
+IF((Main Strategy="Venture Capital"),14,
+IF((Main Strategy="Other"),0,
+IF((Main Strategy="Mixed"),0
+))))))
+***PE_Strat_C_Rob=VALUE(
+IF((Main Strategy="Growth Capital"),18,
+IF((Main Strategy="Leveraged Buyout"),0,
+IF((Main Strategy="Venture Capital"),0,
+IF((Main Strategy="Other"),0,
+IF((Main Strategy="Mixed"),0
+))))))
+***PE_Strat_B_Rob=VALUE(
+IF((Main Strategy="Growth Capital"),12,
+IF((Main Strategy="Leveraged Buyout"),22,
+IF((Main Strategy="Venture Capital"),29,
+IF((Main Strategy="Other"),50,
 IF((Main Strategy="Mixed"),13
+))))))
+***PE_Strat_A_Rob=VALUE(
+IF((Main Strategy="Growth Capital"),59,
+IF((Main Strategy="Leveraged Buyout"),48,
+IF((Main Strategy="Venture Capital"),57,
+IF((Main Strategy="Other"),50,
+IF((Main Strategy="Mixed"),50
+))))))
+***PE_Strat_AA_Rob=VALUE(
+IF((Main Strategy="Growth Capital"),12,
+IF((Main Strategy="Leveraged Buyout"),30,
+IF((Main Strategy="Venture Capital"),0,
+IF((Main Strategy="Other"),0,
+IF((Main Strategy="Mixed"),38
+))))))
+***PE_Strat_Nbr_Rob=VALUE(
+IF((Main Strategy="Growth Capital"),17,
+IF((Main Strategy="Leveraged Buyout"),27,
+IF((Main Strategy="Venture Capital"),7,
+IF((Main Strategy="Other"),2,
+IF((Main Strategy="Mixed"),8
+))))))
+***SG_Strat_E_PRI=VALUE(
+IF((Main Strategy="Growth Capital"),0,
+IF((Main Strategy="Leveraged Buyout"),0,
+IF((Main Strategy="Venture Capital"),0,
+IF((Main Strategy="Other"),0,
+IF((Main Strategy="Mixed"),0
+))))))
+***SG_Strat_D_PRI=VALUE(
+IF((Main Strategy="Growth Capital"),0,
+IF((Main Strategy="Leveraged Buyout"),0,
+IF((Main Strategy="Venture Capital"),0,
+IF((Main Strategy="Other"),0,
+IF((Main Strategy="Mixed"),0
+))))))
+***SG_Strat_C_PRI=VALUE(
+IF((Main Strategy="Growth Capital"),12,
+IF((Main Strategy="Leveraged Buyout"),11,
+IF((Main Strategy="Venture Capital"),22,
+IF((Main Strategy="Other"),18,
+IF((Main Strategy="Mixed"),14
+))))))
+***SG_Strat_B_PRI=VALUE(
+IF((Main Strategy="Growth Capital"),32,
+IF((Main Strategy="Leveraged Buyout"),33,
+IF((Main Strategy="Venture Capital"),33,
+IF((Main Strategy="Other"),12,
+IF((Main Strategy="Mixed"),40
+))))))
+***SG_Strat_A_PRI=VALUE(
+IF((Main Strategy="Growth Capital"),38,
+IF((Main Strategy="Leveraged Buyout"),30,
+IF((Main Strategy="Venture Capital"),33,
+IF((Main Strategy="Other"),41,
+IF((Main Strategy="Mixed"),30
+))))))
+***SG_Strat_AA_PRI=VALUE(
+IF((Main Strategy="Growth Capital"),18,
+IF((Main Strategy="Leveraged Buyout"),26,
+IF((Main Strategy="Venture Capital"),11,
+IF((Main Strategy="Other"),29,
+IF((Main Strategy="Mixed"),16
+))))))
+***SG_Strat_Nbr_PRI=VALUE(
+IF((Main Strategy="Growth Capital"),118,
+IF((Main Strategy="Leveraged Buyout"),160,
+IF((Main Strategy="Venture Capital"),27,
+IF((Main Strategy="Other"),17,
+IF((Main Strategy="Mixed"),43
+))))))
+***PE_Strat_E_PRI=VALUE(
+IF((Main Strategy="Growth Capital"),0,
+IF((Main Strategy="Leveraged Buyout"),0,
+IF((Main Strategy="Venture Capital"),0,
+IF((Main Strategy="Other"),0,
+IF((Main Strategy="Mixed"),0
+))))))
+***PE_Strat_D_PRI=VALUE(
+IF((Main Strategy="Growth Capital"),4,
+IF((Main Strategy="Leveraged Buyout"),1,
+IF((Main Strategy="Venture Capital"),11,
+IF((Main Strategy="Other"),6,
+IF((Main Strategy="Mixed"),7
+))))))
+***PE_Strat_C_PRI=VALUE(
+IF((Main Strategy="Growth Capital"),13,
+IF((Main Strategy="Leveraged Buyout"),9,
+IF((Main Strategy="Venture Capital"),33,
+IF((Main Strategy="Other"),29,
+IF((Main Strategy="Mixed"),14
+))))))
+***PE_Strat_B_PRI=VALUE(
+IF((Main Strategy="Growth Capital"),26,
+IF((Main Strategy="Leveraged Buyout"),27,
+IF((Main Strategy="Venture Capital"),33,
+IF((Main Strategy="Other"),18,
+IF((Main Strategy="Mixed"),37
+))))))
+***PE_Strat_A_PRI=VALUE(
+IF((Main Strategy="Growth Capital"),49,
+IF((Main Strategy="Leveraged Buyout"),47,
+IF((Main Strategy="Venture Capital"),22,
+IF((Main Strategy="Other"),35,
+IF((Main Strategy="Mixed"),37
+))))))
+***PE_Strat_AA_PRI=VALUE(
+IF((Main Strategy="Growth Capital"),8,
+IF((Main Strategy="Leveraged Buyout"),16,
+IF((Main Strategy="Venture Capital"),0,
+IF((Main Strategy="Other"),12,
+IF((Main Strategy="Mixed"),5
+))))))
+***PE_Strat_Nbr_PRI=VALUE(
+IF((Main Strategy="Growth Capital"),118,
+IF((Main Strategy="Leveraged Buyout"),160,
+IF((Main Strategy="Venture Capital"),27,
+IF((Main Strategy="Other"),17,
+IF((Main Strategy="Mixed"),43
 ))))))
 ***Combined_Score=VALUE(SG_Total)+VALUE(PE_Total)
 ***Combined_Denom=VALUE(SG_Denom)+VALUE(PE_Max)
@@ -546,13 +549,24 @@ IF((PE11_Stars="1_Star.jpg"),2,
 IF((PE11_Stars="2_Stars.jpg"),3,
 IF((PE11_Stars="3_Stars.jpg"),4
 )))))
+***PE12_Value=VALUE(
+IF((PE12_Stars="0_Stars.jpg"),1,
+IF((PE12_Stars="1_Star.jpg"),2,
+IF((PE12_Stars="2_Stars.jpg"),3,
+IF((PE12_Stars="3_Stars.jpg"),4
+)))))
 ***PE13_Value=VALUE(
 IF((PE13_Stars="0_Stars.jpg"),1,
 IF((PE13_Stars="1_Star.jpg"),2,
 IF((PE13_Stars="2_Stars.jpg"),3,
 IF((PE13_Stars="3_Stars.jpg"),4
 )))))
-
+***PE15_Value=VALUE(
+IF((PE15_Stars="0_Stars.jpg"),1,
+IF((PE15_Stars="1_Star.jpg"),2,
+IF((PE15_Stars="2_Stars.jpg"),3,
+IF((PE15_Stars="3_Stars.jpg"),4
+)))))
 /* Indicator change calculations */
 ***SG1_Change=TEXT(
 IFBLANK_ELSE(18_SG1_Value,"Equal.jpg",IFBLANK_ELSE(SG1_Value,"Equal.jpg",
@@ -710,81 +724,83 @@ IF((PE_19_Value=PE_18_Value),"equal.jpg","equal.jpg"
 ***COMBINED_SCORE_MEDIAN=TEXT("B")
 /* "Total respondents" refers to number of Robeco reporters */
 ***TOTAL_RESPONDENTS=TEXT("61")
-/* "Total respondents"2 refers to number of PRI signatory reporters to that module*/
-***TOTAL_RESPONDENTS2=TEXT("303")
+/* "Total respondents2" refers to number of PRI signatory reporters in the module (did both SG and PE!) */
+***TOTAL_RESPONDENTS2=TEXT("373")
 
 /* Regional calculations */
+/* For chart "PE_Levels_RegionBar_Chart" and "SG_Levels_RegionBar_Chart" */
+
 ***SG_Region_E=VALUE(
-IF((Region="Europe"),0,
-IF((Region="North America"),0,
+IF((Region="Asia-Pacific"),0,
 IF((Region="EM (includes BRIC)"),0,
-IF((Region="Asia-Pacific"),0,0
+IF((Region="Europe"),0,
+IF((Region="North America"),0,0
 )))))
 ***SG_Region_D=VALUE(
-IF((Region="Europe"),0,
-IF((Region="North America"),4,
+IF((Region="Asia-Pacific"),0,
 IF((Region="EM (includes BRIC)"),0,
-IF((Region="Asia-Pacific"),0,0
+IF((Region="Europe"),2,
+IF((Region="North America"),0,0
 )))))
 ***SG_Region_C=VALUE(
-IF((Region="Europe"),19,
-IF((Region="North America"),24,
-IF((Region="EM (includes BRIC)"),22,
-IF((Region="Asia-Pacific"),0,0
+IF((Region="Asia-Pacific"),0,
+IF((Region="EM (includes BRIC)"),0,
+IF((Region="Europe"),2,
+IF((Region="North America"),6,0
 )))))
 ***SG_Region_B=VALUE(
-IF((Region="Europe"),37,
-IF((Region="North America"),48,
-IF((Region="EM (includes BRIC)"),67,
-IF((Region="Asia-Pacific"),100,0
+IF((Region="Asia-Pacific"),2,
+IF((Region="EM (includes BRIC)"),3,
+IF((Region="Europe"),8,
+IF((Region="North America"),3,0
 )))))
 ***SG_Region_A=VALUE(
-IF((Region="Europe"),22,
-IF((Region="North America"),16,
-IF((Region="EM (includes BRIC)"),11,
-IF((Region="Asia-Pacific"),0,0
+IF((Region="Asia-Pacific"),0,
+IF((Region="EM (includes BRIC)"),2,
+IF((Region="Europe"),13,
+IF((Region="North America"),3,0
 )))))
 ***SG_Region_AA=VALUE(
-IF((Region="Europe"),22,
-IF((Region="North America"),8,
-IF((Region="EM (includes BRIC)"),0,
-IF((Region="Asia-Pacific"),0,0
+IF((Region="Asia-Pacific"),0,
+IF((Region="EM (includes BRIC)"),1,
+IF((Region="Europe"),11,
+IF((Region="North America"),5,0
 )))))
 ***PE_Region_E=VALUE(
-IF((Region="Europe"),0,
-IF((Region="North America"),0,
+IF((Region="Asia-Pacific"),0,
 IF((Region="EM (includes BRIC)"),0,
-IF((Region="Asia-Pacific"),0,0
+IF((Region="Europe"),0,
+IF((Region="North America"),0,0
 )))))
 ***PE_Region_D=VALUE(
-IF((Region="Europe"),0,
-IF((Region="North America"),4,
+IF((Region="Asia-Pacific"),0,
 IF((Region="EM (includes BRIC)"),0,
-IF((Region="Asia-Pacific"),0,0
+IF((Region="Europe"),0,
+IF((Region="North America"),1,0
 )))))
 ***PE_Region_C=VALUE(
-IF((Region="Europe"),7,
-IF((Region="North America"),20,
-IF((Region="EM (includes BRIC)"),33,
-IF((Region="Asia-Pacific"),0,0
+IF((Region="Asia-Pacific"),0,
+IF((Region="EM (includes BRIC)"),1,
+IF((Region="Europe"),2,
+IF((Region="North America"),0,0
 )))))
 ***PE_Region_B=VALUE(
-IF((Region="Europe"),19,
-IF((Region="North America"),40,
-IF((Region="EM (includes BRIC)"),22,
-IF((Region="Asia-Pacific"),50,0
+IF((Region="Asia-Pacific"),1,
+IF((Region="EM (includes BRIC)"),1,
+IF((Region="Europe"),7,
+IF((Region="North America"),3,0
 )))))
 ***PE_Region_A=VALUE(
-IF((Region="Europe"),56,
-IF((Region="North America"),32,
-IF((Region="EM (includes BRIC)"),44,
-IF((Region="Asia-Pacific"),50,0
+IF((Region="Asia-Pacific"),1,
+IF((Region="EM (includes BRIC)"),3,
+IF((Region="Europe"),18,
+IF((Region="North America"),10,0
 )))))
 ***PE_Region_AA=VALUE(
-IF((Region="Europe"),19,
-IF((Region="North America"),4,
-IF((Region="EM (includes BRIC)"),0,
-IF((Region="Asia-Pacific"),0,0
+IF((Region="Asia-Pacific"),0,
+IF((Region="EM (includes BRIC)"),1,
+IF((Region="Europe"),9,
+IF((Region="North America"),3,0
 )))))
 ***PE_COUNT_E_Europe=SUM(IF((PE_Level="E")AND(Region="Europe"),1,0,))
 ***PE_COUNT_D_Europe=SUM(IF((PE_Level="D")AND(Region="Europe"),1,0,))
