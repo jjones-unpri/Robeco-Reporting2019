@@ -731,9 +731,9 @@ IF((PE_19_Value>PE_18_Value),"up.jpg",
 IF((PE_19_Value<PE_18_Value),"down.jpg",
 IF((PE_19_Value=PE_18_Value),"equal.jpg","equal.jpg"
 )))))
-***SG_MEDIAN=TEXT("B")
+***SG_MEDIAN=TEXT("A")
 ***PE_MEDIAN=TEXT("A")
-***COMBINED_SCORE_MEDIAN=TEXT("B")
+***COMBINED_SCORE_MEDIAN=TEXT("A")
 /* "Total respondents" refers to number of Robeco reporters */
 ***TOTAL_RESPONDENTS=TEXT("61")
 /* "Total respondents2" refers to number of PRI signatory reporters in the module (did both SG and PE!) */
