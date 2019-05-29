@@ -797,16 +797,16 @@ IF((Region="Europe"),6,
 IF((Region="North America"),0,0
 )))))
 ***PE_Region_B=VALUE(
-IF((Region="Asia-Pacific"),50,
+IF((Region="Asia-Pacific"),48,
 IF((Region="EM (includes BRIC)"),17,
-IF((Region="Europe"),19,
+IF((Region="Europe"),17,
 IF((Region="North America"),18,0
 )))))
 ***PE_Region_A=VALUE(
 IF((Region="Asia-Pacific"),50,
-IF((Region="EM (includes BRIC)"),50,
-IF((Region="Europe"),50,
-IF((Region="North America"),59,0
+IF((Region="EM (includes BRIC)"),53,
+IF((Region="Europe"),53,
+IF((Region="North America"),57,0
 )))))
 ***PE_Region_AA=VALUE(
 IF((Region="Asia-Pacific"),0,
