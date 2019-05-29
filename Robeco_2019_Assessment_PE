@@ -433,24 +433,24 @@ IF((PE_04_NA_FLAG=1)AND(PE_13_NA_FLAG=1),1,0))
 
 /* Totalling additional numerators for all scenarios, and also creating the text to display for the best "x" additional indicators */
 
-***Sort_2=SUM_SORT(2, PE_04_SCORE, PE_07_SCORE, PE_08_SCORE, PE_11_SCORE, PE_12_SCORE, PE_13_SCORE, PE_15_SCORE)
-***Sort_2_Text=CONCATENATE_SORT(2,TEXT(PE_04_SCORE)+"|PE 04",TEXT(PE_07_SCORE)+"|PE 07",TEXT(PE_08_SCORE)+"|PE 08",TEXT(PE_11_SCORE)+"|PE 11",TEXT(PE_12_SCORE)+"|PE 12",TEXT(PE_13_SCORE)+"|PE 13",TEXT(PE_15_SCORE)+"|PE 15")
+***Sort_3=SUM_SORT(3, PE_04_SCORE, PE_07_SCORE, PE_08_SCORE, PE_11_SCORE, PE_12_SCORE, PE_13_SCORE, PE_15_SCORE)
+***Sort_3_Text=CONCATENATE_SORT(3,TEXT(PE_04_SCORE)+"|PE 04",TEXT(PE_07_SCORE)+"|PE 07",TEXT(PE_08_SCORE)+"|PE 08",TEXT(PE_11_SCORE)+"|PE 11",TEXT(PE_12_SCORE)+"|PE 12",TEXT(PE_13_SCORE)+"|PE 13",TEXT(PE_15_SCORE)+"|PE 15")
 
 /* Below are used in Assessment Report text box or for testing */
 
 ***PE_Total=VALUE(
-IF((A_CORE_FLAG=1),VALUE(A_CORE_TOTAL)+VALUE(Sort_2),
-IF((B_CORE_FLAG=1),VALUE(B_CORE_TOTAL)+VALUE(Sort_2),0
+IF((A_CORE_FLAG=1),VALUE(A_CORE_TOTAL)+VALUE(Sort_3),
+IF((B_CORE_FLAG=1),VALUE(B_CORE_TOTAL)+VALUE(Sort_3),0
 )))
 
 ***PE_Denom=VALUE(
-IF((A_CORE_FLAG=1),24,
-IF((B_CORE_FLAG=1),21,0
+IF((A_CORE_FLAG=1),27,
+IF((B_CORE_FLAG=1),24,0
 )))
 
 ***PE_NbIndics=VALUE(
-IF((A_CORE_FLAG=1),8,
-IF((B_CORE_FLAG=1),7,0
+IF((A_CORE_FLAG=1),9,
+IF((B_CORE_FLAG=1),8,0
 )))
 
 ***PE_Core_Inds=VALUE(
@@ -458,9 +458,9 @@ IF((A_CORE_FLAG=1),6,
 IF((B_CORE_FLAG=1),5,0
 )))
 
-***PE_AdditionalIndics=VALUE(2)
+***PE_AdditionalIndics=VALUE(3)
 
-***PE_AdditionalIndics_text=TEXT(Sort_2_Text)
+***PE_AdditionalIndics_text=TEXT(Sort_3_Text)
 
 ***PE_Percentage=VALUE(DIVIDE(PE_Total,PE_Denom)*100)
 
