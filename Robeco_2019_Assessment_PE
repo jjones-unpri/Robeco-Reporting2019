@@ -136,63 +136,58 @@ IF((PE_10_2_10>0),1,0
 
 /* PE 11 scoring */
 
-***PE_11_1_All=RESPONSE("Allocate responsibility for ESG issues to board/senior management", "7f7aef74c6344b81b5a0cf0cb1a4c363_2", SURVEY_ID)
 ***PE_11_1_All_90=IFBLANK(SCORE(">90% of portfolio companies", "9f015329dd864f94bca9f831fb9b25bd_6", SURVEY_ID),0)
-***PE_11_1_All_51=IFBLANK(SCORE("51-90% of portfolio companies", "105521b3204546d58cc1f7d5e36ed849_6", SURVEY_ID),0)
-***PE_11_1_All_10=IFBLANK(SCORE("10-50% of portfolio companies", "40fc7014360c4cf29fb84da3e97b0533_6", SURVEY_ID),0)
-***PE_11_1_All_9=IFBLANK(SCORE("<10% of portfolio companies", "18e4fa28bbf54e8781d8d72b4f8727e7_6", SURVEY_ID),0)
-***PE_11_1_All_sum=VALUE(PE_11_1_All_90)+VALUE(PE_11_1_All_51)+VALUE(PE_11_1_All_10)+VALUE(PE_11_1_All_9)
-***PE_11_1_All_blank=IFBLANK(PE_11_1_All_sum, 0)
-***PE_11_1_Com=RESPONSE("Composition of board ensure ESG expertise", "7f7aef74c6344b81b5a0cf0cb1a4c363_3", SURVEY_ID)
 ***PE_11_1_Com_90=IFBLANK(SCORE(">90% of portfolio companies", "9f015329dd864f94bca9f831fb9b25bd_7", SURVEY_ID),0)
-***PE_11_1_Com_51=IFBLANK(SCORE("51-90% of portfolio companies", "105521b3204546d58cc1f7d5e36ed849_7", SURVEY_ID),0)
-***PE_11_1_Com_10=IFBLANK(SCORE("10-50% of portfolio companies", "40fc7014360c4cf29fb84da3e97b0533_7", SURVEY_ID),0)
-***PE_11_1_Com_9=IFBLANK(SCORE("<10% of portfolio companies", "18e4fa28bbf54e8781d8d72b4f8727e7_7", SURVEY_ID),0)
-***PE_11_1_Com_sum=VALUE(PE_11_1_Com_90)+VALUE(PE_11_1_Com_51)+VALUE(PE_11_1_Com_10)+VALUE(PE_11_1_Com_9))
-***PE_11_1_Com_blank=IFBLANK(PE_11_1_Com_sum, 0)
-***PE_11_1_Rm=RESPONSE("Consider ESG issues in risk management processes", "7f7aef74c6344b81b5a0cf0cb1a4c363_4", SURVEY_ID)
 ***PE_11_1_Rm_90=IFBLANK(SCORE(">90% of portfolio companies", "9f015329dd864f94bca9f831fb9b25bd_8", SURVEY_ID),0)
-***PE_11_1_Rm_51=IFBLANK(SCORE("51-90% of portfolio companies", "105521b3204546d58cc1f7d5e36ed849_8", SURVEY_ID),0)
-***PE_11_1_Rm_10=IFBLANK(SCORE("10-50% of portfolio companies", "40fc7014360c4cf29fb84da3e97b0533_8", SURVEY_ID),0)
-***PE_11_1_Rm_9=IFBLANK(SCORE("<10% of portfolio companies", "18e4fa28bbf54e8781d8d72b4f8727e7_8", SURVEY_ID),0)
-***PE_11_1_Rm_sum=VALUE(PE_11_1_Rm_90)+VALUE(PE_11_1_Rm_51)+VALUE(PE_11_1_Rm_10)+VALUE(PE_11_1_Rm_9)
-***PE_11_1_Rm_blank=IFBLANK(PE_11_1_Rm_sum, 0)
-***PE_11_1_Pt=RESPONSE("Define performance targets for applicable ESG issues in operations", "7f7aef74c6344b81b5a0cf0cb1a4c363_5", SURVEY_ID)
 ***PE_11_1_Pt_90=IFBLANK(SCORE(">90% of portfolio companies", "9f015329dd864f94bca9f831fb9b25bd_9", SURVEY_ID),0)
-***PE_11_1_Pt_51=IFBLANK(SCORE("51-90% of portfolio companies", "105521b3204546d58cc1f7d5e36ed849_9", SURVEY_ID),0)
-***PE_11_1_Pt_10=IFBLANK(SCORE("10-50% of portfolio companies", "40fc7014360c4cf29fb84da3e97b0533_9", SURVEY_ID),0)
-***PE_11_1_Pt_9=IFBLANK(SCORE("<10% of portfolio companies", "18e4fa28bbf54e8781d8d72b4f8727e7_9", SURVEY_ID),0)
-***PE_11_1_Pt_sum=VALUE(PE_11_1_Pt_90)+VALUE(PE_11_1_Pt_51)+VALUE(PE_11_1_Pt_10)+VALUE(PE_11_1_Pt_9)
-***PE_11_1_Pt_blank=IFBLANK(PE_11_1_Pt_sum, 0)
-***PE_11_1_Id=RESPONSE("Identify and engage external parties or stakeholders that could add value or decrease risk through ESG issues", "b299bd1dfabe423490f5b89d19da8e9e", SURVEY_ID)
 ***PE_11_1_Id_90=IFBLANK(SCORE("90% of portfolio companies", "b005ca2b787d418dac15be3372001d37", SURVEY_ID),0)
-***PE_11_1_Id_51=IFBLANK(SCORE("51-90% of portfolio companies", "9230c2c6987f4ec9a05e535efe5c1851", SURVEY_ID),0)
-***PE_11_1_Id_10=IFBLANK(SCORE("10-50% of portfolio companies", "0c2e507ce44c4c5cbb7075218e3b57a2", SURVEY_ID),0)
-***PE_11_1_Id_9=IFBLANK(SCORE("<10% of portfolio companies", "d0137bf63a8c44b8bca86023583641bb", SURVEY_ID),0)
-***PE_11_1_Id_sum=VALUE(PE_11_1_Id_90)+VALUE(PE_11_1_Id_51)+VALUE(PE_11_1_Id_10)+VALUE(PE_11_1_Id_9)
-***PE_11_1_Id_blank=IFBLANK(PE_11_1_Id_sum, 0)
-***PE_11_1_ESMS=RESPONSE("Developing/implementing an environmental/social management system (ESMS) or similar", "b488498b249b43a5aebaa09cc26bef41", SURVEY_ID)
 ***PE_11_1_ESMS_90=IFBLANK(SCORE("90% of portfolio companies", "b1628a7088f84fcfa125c4d1e1592e37", SURVEY_ID),0)
-***PE_11_1_ESMS_51=IFBLANK(SCORE("51-90% of portfolio companies", "7a7fc67948704d668888225a24d38fd5", SURVEY_ID),0)
-***PE_11_1_ESMS_10=IFBLANK(SCORE("10-50% of portfolio companies", "3087d911e68d43379bc9f70c2a30a9ac", SURVEY_ID),0)
-***PE_11_1_ESMS_9=IFBLANK(SCORE("<10% of portfolio companies", "b914642db282413687d604f0d7768266", SURVEY_ID),0)
-***PE_11_1_ESMS_sum=VALUE(PE_11_1_ESMS_90)+VALUE(PE_11_1_ESMS_51)+VALUE(PE_11_1_ESMS_10)+VALUE(PE_11_1_ESMS_9)
-***PE_11_1_ESMS_blank=IFBLANK(PE_11_1_ESMS_sum, 0)
-***PE_11_1_Other=RESPONSE("Other actions, specify", "7f7aef74c6344b81b5a0cf0cb1a4c363_1", SURVEY_ID)
 ***PE_11_1_Other_90=IFBLANK(SCORE(">90% of portfolio companies", "9f015329dd864f94bca9f831fb9b25bd_3", SURVEY_ID),0)
+
+***PE_11_1_90_sum=VALUE(PE_11_1_All_90)+VALUE(PE_11_1_Com_90)+VALUE(PE_11_1_Rm_90)+VALUE(PE_11_1_Pt_90)+VALUE(PE_11_1_Id_90)+VALUE(PE_11_1_ESMS_90)+VALUE(PE_11_1_Other_90)
+***PE_11_1_90_subscore=IFBLANK(PE_11_1_90_sum, 0)
+
+***PE_11_1_All_51=IFBLANK(SCORE("51-90% of portfolio companies", "105521b3204546d58cc1f7d5e36ed849_6", SURVEY_ID),0)
+***PE_11_1_Com_51=IFBLANK(SCORE("51-90% of portfolio companies", "105521b3204546d58cc1f7d5e36ed849_7", SURVEY_ID),0)
+***PE_11_1_Rm_51=IFBLANK(SCORE("51-90% of portfolio companies", "105521b3204546d58cc1f7d5e36ed849_8", SURVEY_ID),0)
+***PE_11_1_Pt_51=IFBLANK(SCORE("51-90% of portfolio companies", "105521b3204546d58cc1f7d5e36ed849_9", SURVEY_ID),0)
+***PE_11_1_Id_51=IFBLANK(SCORE("51-90% of portfolio companies", "9230c2c6987f4ec9a05e535efe5c1851", SURVEY_ID),0)
+***PE_11_1_ESMS_51=IFBLANK(SCORE("51-90% of portfolio companies", "7a7fc67948704d668888225a24d38fd5", SURVEY_ID),0)
 ***PE_11_1_Other_51=IFBLANK(SCORE("51-90% of portfolio companies", "105521b3204546d58cc1f7d5e36ed849_3", SURVEY_ID),0)
+
+***PE_11_1_51_sum=VALUE(PE_11_1_All_51)+VALUE(PE_11_1_Com_51)+VALUE(PE_11_1_Rm_51)+VALUE(PE_11_1_Pt_51)+VALUE(PE_11_1_Id_51)+VALUE(PE_11_1_ESMS_51)+VALUE(PE_11_1_Other_51)
+***PE_11_1_51_subscore=IFBLANK(PE_11_1_51_sum, 0)
+
+***PE_11_1_All_10=IFBLANK(SCORE("10-50% of portfolio companies", "40fc7014360c4cf29fb84da3e97b0533_6", SURVEY_ID),0)
+***PE_11_1_Com_10=IFBLANK(SCORE("10-50% of portfolio companies", "40fc7014360c4cf29fb84da3e97b0533_7", SURVEY_ID),0)
+***PE_11_1_Rm_10=IFBLANK(SCORE("10-50% of portfolio companies", "40fc7014360c4cf29fb84da3e97b0533_8", SURVEY_ID),0)
+***PE_11_1_Pt_10=IFBLANK(SCORE("10-50% of portfolio companies", "40fc7014360c4cf29fb84da3e97b0533_9", SURVEY_ID),0)
+***PE_11_1_Id_10=IFBLANK(SCORE("10-50% of portfolio companies", "0c2e507ce44c4c5cbb7075218e3b57a2", SURVEY_ID),0)
+***PE_11_1_ESMS_10=IFBLANK(SCORE("10-50% of portfolio companies", "3087d911e68d43379bc9f70c2a30a9ac", SURVEY_ID),0)
 ***PE_11_1_Other_10=IFBLANK(SCORE("10-50% of portfolio companies", "40fc7014360c4cf29fb84da3e97b0533_3", SURVEY_ID),0)
+
+***PE_11_1_10_sum=VALUE(PE_11_1_All_10)+VALUE(PE_11_1_Com_10)+VALUE(PE_11_1_Rm_10)+VALUE(PE_11_1_Pt_10)+VALUE(PE_11_1_Id_10)+VALUE(PE_11_1_ESMS_10)+VALUE(PE_11_1_Other_10)
+***PE_11_1_10_subscore=IFBLANK(PE_11_1_10_sum, 0)
+
+***PE_11_1_All_9=IFBLANK(SCORE("<10% of portfolio companies", "18e4fa28bbf54e8781d8d72b4f8727e7_6", SURVEY_ID),0)
+***PE_11_1_Com_9=IFBLANK(SCORE("<10% of portfolio companies", "18e4fa28bbf54e8781d8d72b4f8727e7_7", SURVEY_ID),0)
+***PE_11_1_Rm_9=IFBLANK(SCORE("<10% of portfolio companies", "18e4fa28bbf54e8781d8d72b4f8727e7_8", SURVEY_ID),0)
+***PE_11_1_Pt_9=IFBLANK(SCORE("<10% of portfolio companies", "18e4fa28bbf54e8781d8d72b4f8727e7_9", SURVEY_ID),0)
+***PE_11_1_Id_9=IFBLANK(SCORE("<10% of portfolio companies", "d0137bf63a8c44b8bca86023583641bb", SURVEY_ID),0)
+***PE_11_1_ESMS_9=IFBLANK(SCORE("<10% of portfolio companies", "b914642db282413687d604f0d7768266", SURVEY_ID),0)
 ***PE_11_1_Other_9=IFBLANK(SCORE("<10% of portfolio companies", "18e4fa28bbf54e8781d8d72b4f8727e7_3", SURVEY_ID),0)
-***PE_11_1_Other_sum=VALUE(PE_11_1_Other_90)+VALUE(PE_11_1_Other_51)+VALUE(PE_11_1_Other_10)+VALUE(PE_11_1_Other_9)
-***PE_11_1_Other_blank=IFBLANK(PE_11_1_Other_sum, 0)
-***PE_11_1_sum=VALUE(PE_11_1_All_blank)+VALUE(PE_11_1_Com_blank)+VALUE(PE_11_1_Rm_blank)+VALUE(PE_11_1_Pt_blank)+VALUE(PE_11_1_Id_blank)+VALUE(PE_11_1_ESMS_blank)+VALUE(PE_11_1_Other_blank)
+
+***PE_11_1_9_sum=VALUE(PE_11_1_All_9)+VALUE(PE_11_1_Com_9)+VALUE(PE_11_1_Rm_9)+VALUE(PE_11_1_Pt_9)+VALUE(PE_11_1_Id_9)+VALUE(PE_11_1_ESMS_9)+VALUE(PE_11_1_Other_9)
+***PE_11_1_9_subscore=IFBLANK(PE_11_1_9_sum, 0)
+
+***PE_11_1_sum=VALUE(PE_11_1_9_subscore)+VALUE(PE_11_1_10_subscore)+VALUE(PE_11_1_51_subscore)+VALUE(PE_11_1_90_subscore)
+
 ***PE_11_SCORE=VALUE(
 IF((PE_11_1_sum)=0,0,
 IF((PE_11_1_sum)>=30,3,
-IF((PE_11_1_sum>10) AND (PE_11_1_sum<30),2,
-IF((PE_11_1_sum=1) OR (PE_11_1_sum=10),1,
-IF((PE_11_1_sum>1) AND (PE_11_1_sum<10),2,0
-))))))
+IF(((PE_11_1_sum>10) AND (PE_11_1_sum<30)) OR (PE_11_1_10_subscore>1),2,
+IF(((PE_11_1_9_subscore>=1) OR (PE_11_1_10_subscore=1) OR (PE_11_1_51_subscore=10) OR (PE_11_1_90_subscore=10)),1,0
+)))))
 
 /* PE 12 scoring */
 
